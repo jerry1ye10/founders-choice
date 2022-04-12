@@ -1,0 +1,21 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body {
+    letter-spacing: -0.1em;
+}
+
+.raleway {
+    font-family: Raleway;
+}
+
+.montserrat {
+    font-family: Montserrat;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
