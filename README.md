@@ -20,7 +20,7 @@ We take founder's data very seriously. Although we authenticate all founders thr
 * AngelList 
 * Crunchbase 
 * 2.12 Angels 
-* BBGV 
+* BBG Ventures
 * Bloomberg Beta
 * Precursor Ventures
 
