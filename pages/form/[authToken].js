@@ -116,7 +116,7 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
       </div>
       <h3 className="raleway text-lg sm:text-xl">
         If there are any investors missing, please email us at
-        jerry@founderschoicevc.com
+        jerry1ye10@gmail.com
       </h3>
       <button
         onClick={submitInvestors}

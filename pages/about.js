@@ -224,11 +224,15 @@ export default function FAQ() {
       </div>
       <br />
 
-      <p className={`${STYLED_PARA} mb-36 mt-12`}>
+      <p className={`${STYLED_PARA} mt-12`}>
         Although we have venture capital firms as sponsors for this project,
         they do not have access to any of the data nor are they able to
         contribute to any of the rankings. Our sponsors are only interested in
         supporting this ranking project so they can better serve founders.
+      </p>
+      <p className={`${STYLED_PARA}`}>
+        If you'd like to support us as a sponsor, please reach out to us at
+        jerry1ye10@gmail.com!{" "}
       </p>
     </div>
   );

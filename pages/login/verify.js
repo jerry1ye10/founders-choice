@@ -177,21 +177,23 @@ export default function SelectCompany({
 
   useEffect(() => {
     if (hasSubmitted) {
-      router.push(`${FORM}/${profile?.id}`)
+      router.push(`${FORM}/${profile?.id}`);
     }
-  }, [hasSubmitted])
+  }, [hasSubmitted]);
 
   if (hasSubmitted) {
-    return <Loader className="mt-36">
-      <h1 className="mt-6">Please wait while we confirm your company...</h1>
-    </Loader>;
+    return (
+      <Loader className="mt-36">
+        <h1 className="mt-6">Please wait while we confirm your company...</h1>
+      </Loader>
+    );
   } else if (companyOptions.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center text-center">
         <h1 className="raleway text-2xl font-extralight mt-8 font-bold w-full xs-w-1/2 px-5">
           We're missing a record of a venture-backed startup that you founded.
           If this is a mistake, please reach out to Jerry Ye at
-          jerry@founderschoicevc.com
+          jerry1ye10@gmail.com
         </h1>
       </div>
     );
@@ -215,7 +217,7 @@ export default function SelectCompany({
         </button>{" "}
         <h3 className="raleway text-xl font-light mt-8 font-bold w-full xs-w-1/2">
           If the startup you founded is missing or incorrect, please reach out
-          to Jerry Ye at jerry@founderschoicevc.com
+          to Jerry Ye at jerry1ye10@gmail.com
         </h3>
       </div>
     );
