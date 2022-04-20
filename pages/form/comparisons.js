@@ -203,6 +203,22 @@ export default function Feedback() {
 
   return (
     <div className="flex flex-col items-center justify-center text-center">
+      <div className="mx-30 flex justify-center">
+        <div className="w-1/2 overflow-hidden h-4 text-xs flex rounded bg-purple-200">
+          <div
+            style={{ width: value + "%" }}
+            className="
+              shadow-none
+              flex flex-col
+              text-center
+              whitespace-nowrap
+              text-white
+              justify-center
+              bg-purple-500
+            "
+          ></div>
+        </div>
+      </div>
       <h2 className="raleway text-4xl font-extralight my-2 font-bold">
         Who would you rather have as an investor?
       </h2>
