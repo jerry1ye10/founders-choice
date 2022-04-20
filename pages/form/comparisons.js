@@ -206,7 +206,14 @@ export default function Feedback() {
       <div className="mx-30 flex justify-center">
         <div className="w-1/2 overflow-hidden h-4 text-xs flex rounded bg-purple-200">
           <div
-            style={{ width: value + "%" }}
+            style={{
+              width:
+                100 -
+                (totalComparisons.length /
+                  ((investors.length * (investors.length - 1)) / 2)) *
+                  100 +
+                "%",
+            }}
             className="
               shadow-none
               flex flex-col
