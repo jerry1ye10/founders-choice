@@ -202,17 +202,19 @@ export default function Feedback() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div>
       <div className="mx-30 flex justify-center">
         <div className="w-1/2 overflow-hidden h-4 text-xs flex rounded bg-purple-200">
           <div
             style={{
               width:
-                100 -
-                (totalComparisons.length /
-                  ((investors.length * (investors.length - 1)) / 2)) *
-                  100 +
-                "%",
+                Math.round(
+                  100 -
+                    ((comparisons.length - currentComparison) /
+                      (investors.length * (investors.length - 1)) /
+                      2) *
+                      100
+                ) + "%",
             }}
             className="
               shadow-none
@@ -226,67 +228,70 @@ export default function Feedback() {
           ></div>
         </div>
       </div>
-      <h2 className="raleway text-4xl font-extralight my-2 font-bold">
-        Who would you rather have as an investor?
-      </h2>
-      <div className="flex flex-wrap justify-evenly py-2 justify-center w-1/2">
-        <button
-          className={`flex font-bold p-12 rounded hover:bg-gray-300 h-100 items-start flex-col	${
-            vc1Selected && "bg-gray-300"
-          }`}
-          onClick={() => {
-            submitComparison(comparison?.vc1?.slug);
-          }}
-        >
-          <div className="w-64 h-64 bg-white overflow-hidden flex">
-            <img
-              className="object-contain w-full"
-              src={comparison?.vc1?.image}
-            />
-          </div>
-          <h1 className="raleway font-bold text-3xl break-words w-64 mt-2">
-            {comparison?.vc1?.name}
-          </h1>
-        </button>
-        <button
-          className={`flex font-bold p-12 rounded hover:bg-gray-300 h-100 items-start flex-col	${
-            vc2Selected && "bg-gray-300"
-          }`}
-          onClick={() => {
-            submitComparison(comparison?.vc2?.slug);
-          }}
-        >
-          <div className="w-64 h-64 bg-white overflow-hidden flex">
-            <img
-              className="object-contain w-full"
-              src={comparison?.vc2?.image}
-            />
-          </div>
-          <h1 className="raleway font-bold text-3xl break-words w-64 mt-2">
-            {comparison?.vc2?.name}
-          </h1>
-        </button>
-      </div>
-      <div className="flex flex-wrap justify-evenly py-2 justify-center py-10">
-        <button
-          className={`flex items-center p-4 rounded-full bg-gray-200 hover:bg-gray-400 md:mr-24${
-            tieSelected && "bg-gray-400"
-          }`}
-          onClick={() => {
-            submitComparison("");
-          }}
-        >
-          <h1 className="raleway font-bold text-2xl md:ml-42">
-            I have equal/no preference.
-          </h1>
-        </button>
-        {firstComparison && (
-          <h2 class="montserrat text-sm sm:text-1xl md:text-2xl font-semibold mt-8 font-bold w-full xs-w-1/2 px-5 sm:px-20 md:px-40">
-            We'll keep showing you possible pairings, you can stop anytime. Once
-            you click a choice, you won't be able to change your choice for a
-            few months.
-          </h2>
-        )}
+      <div className="flex flex-col items-center justify-center text-center">
+        <h2 className="raleway text-4xl font-extralight my-2 font-bold">
+          Who would you rather have as an investor?
+        </h2>
+
+        <div className="flex flex-wrap justify-evenly py-2 justify-center w-1/2">
+          <button
+            className={`flex font-bold p-12 rounded hover:bg-gray-300 h-100 items-start flex-col	${
+              vc1Selected && "bg-gray-300"
+            }`}
+            onClick={() => {
+              submitComparison(comparison?.vc1?.slug);
+            }}
+          >
+            <div className="w-64 h-64 bg-white overflow-hidden flex">
+              <img
+                className="object-contain w-full"
+                src={comparison?.vc1?.image}
+              />
+            </div>
+            <h1 className="raleway font-bold text-3xl break-words w-64 mt-2">
+              {comparison?.vc1?.name}
+            </h1>
+          </button>
+          <button
+            className={`flex font-bold p-12 rounded hover:bg-gray-300 h-100 items-start flex-col	${
+              vc2Selected && "bg-gray-300"
+            }`}
+            onClick={() => {
+              submitComparison(comparison?.vc2?.slug);
+            }}
+          >
+            <div className="w-64 h-64 bg-white overflow-hidden flex">
+              <img
+                className="object-contain w-full"
+                src={comparison?.vc2?.image}
+              />
+            </div>
+            <h1 className="raleway font-bold text-3xl break-words w-64 mt-2">
+              {comparison?.vc2?.name}
+            </h1>
+          </button>
+        </div>
+        <div className="flex flex-wrap justify-evenly py-2 justify-center py-10">
+          <button
+            className={`flex items-center p-4 rounded-full bg-gray-200 hover:bg-gray-400 md:mr-24${
+              tieSelected && "bg-gray-400"
+            }`}
+            onClick={() => {
+              submitComparison("");
+            }}
+          >
+            <h1 className="raleway font-bold text-2xl md:ml-42">
+              I have equal/no preference.
+            </h1>
+          </button>
+          {firstComparison && (
+            <h2 class="montserrat text-sm sm:text-1xl md:text-2xl font-semibold mt-8 font-bold w-full xs-w-1/2 px-5 sm:px-20 md:px-40">
+              We'll keep showing you possible pairings, you can stop anytime.
+              Once you click a choice, you won't be able to change your choice
+              for a few months.
+            </h2>
+          )}
+        </div>
       </div>
     </div>
   );
