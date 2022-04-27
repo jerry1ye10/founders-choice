@@ -78,7 +78,6 @@ export async function getInvestors(companyId) {
     const data = await exceptionsRef
       .where("companyName", "==", companyId)
       .get();
-    console.log(data);
     if (data.empty) {
       return;
     } else {
