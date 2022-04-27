@@ -19,11 +19,13 @@ class MyDocument extends Document {
             />
             <meta name="author" content="Founder's Choice" />
 
+          <meta property="og:site_name" content="Founder's Choice" />
             <meta property="og:title" content="Founder's Choice" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
             <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/social-preview.png`} />
             <meta property="og:image:alt" content="Founder's Choice Logo" />
+          <meta property="og:description" content="A VC firm ranking generated, anonymously and verifiably, for founders, by founders." />
 
             <meta 
               property="twitter:description" 
