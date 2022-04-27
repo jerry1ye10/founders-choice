@@ -9,7 +9,6 @@ export default async function loginAPI(req, res) {
     res.status(404);
     return;
   }
-  console.log(req.body.code);
 
   try {
     const authFormData = new URLSearchParams({
