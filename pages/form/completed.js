@@ -109,8 +109,9 @@ export default function CompletedComparisons(props) {
       <div className="mx-30 flex justify-center mt-5">
         <div className="w-1/2 overflow-hidden h-4 text-xs flex rounded bg-purple-200">
           <div
-            style={{ width: (countNumber / 3.0).toFixed(2) + "%" }}
+            style={{ width: (countNumber / 2.0).toFixed(2) + "%" }}
             className="
+            
               shadow-none
               flex flex-col
               text-center
@@ -125,14 +126,14 @@ export default function CompletedComparisons(props) {
       <div className="mx-30 flex justify-center">
         <div className="w-1/2">
           <h2 className="grid justify-items-end font-bold">
-            {countNumber}/300
+            {countNumber}/200
           </h2>
         </div>
       </div>
 
       <div className="flex flex-col items-center justify-center text-center mx-24">
         <h2 className="raleway text-xl font-light mt-2 font-bold lg:px-20 w-full xs:w-1/2">
-          Once we've collected data from 300 founders, we'll work to start
+          Once we've collected data from 200 founders, we'll work to start
           publishing our ranking list. If you'd like to help us, please share
           this with your friends. Enter other founders you know below, and we'll
           reach out to them!
