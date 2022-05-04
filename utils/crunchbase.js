@@ -6,6 +6,9 @@ const PEOPLE_ENDPOINT = `https://api.crunchbase.com/api/v4/searches/people?user_
 const COMPANIES_ENDPOINT = `https://api.crunchbase.com/api/v4/searches/organizations?user_key=${API_KEY}`;
 const INVESTORS_ENDPOINT = (companyID) =>
   `https://api.crunchbase.com/api/v4/entities/organizations/${companyID}?card_ids=investors&user_key=${API_KEY}`;
+const INVESTOR_BY_SLUG_ENDPOINT = (investorSlug) =>
+`https://api.crunchbase.com/api/v4/entities/organizations/${investorSlug}?field_ids=properties,investor_type,image_url&user_key=${API_KEY}`;
+
 
 // TODO: Update with what kinds of investors we allow in the rankings
 const ALLOWED_INVESTOR_TYPES = [`venture_capital`];
@@ -53,12 +56,11 @@ export async function findPossibleCompanies(firstName, lastName) {
     ],
     limit: 50,
   };
-  var resp = await ky.post(COMPANIES_ENDPOINT, { json: body }).json();
   if (isEmpty(validPeople)) {
-    resp.entities = [];
+    return [];
   }
-
-  return resp;
+  const resp = await ky.post(COMPANIES_ENDPOINT, { json: body }).json();
+  return resp?.entities;
 }
 
 function isEmpty(obj) {
@@ -72,18 +74,34 @@ export async function getInvestors(companyId) {
         headers: { Accept: "application/json" },
       })
     ).json();
-    return companiesInvestors;
-  } catch (error) {
-    const exceptionsRef = db.collection("AdditionalFounders");
-    const data = await exceptionsRef
-      .where("companyName", "==", companyId)
-      .get();
-    console.log(data);
-    if (data.empty) {
-      return;
-    } else {
-      return [];
+    const investors = companiesInvestors?.cards?.investors;
+    const overriddenInvestorsSnapshot = await db.collection("AdditionalInvestors").doc(companyId).get()
+    if (overriddenInvestorsSnapshot?.exists) {
+      const additionalInvestorsSlugs = overriddenInvestorsSnapshot.data()?.investors;
+      for (const investorSlug of additionalInvestorsSlugs) {
+        
+        const investorData = await getInvestorBySlug(investorSlug);
+        investors.push(investorData);
+      }
     }
+    return investors;
+  } catch (error) {
+    console.error(error)
+    return [];
+  }
+}
+
+export async function getInvestorBySlug(slug) {
+  try {
+    const companiesInvestors = await (
+      await ky.get(INVESTOR_BY_SLUG_ENDPOINT(slug), {
+        headers: { Accept: "application/json" },
+      })
+    ).json();
+    return companiesInvestors?.properties;
+  } catch (error) {
+    console.error(error)
+    return {};
   }
 }
 
