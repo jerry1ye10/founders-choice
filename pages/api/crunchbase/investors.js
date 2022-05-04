@@ -9,7 +9,7 @@ export default async function getCompany(req, res) {
 
   try {
     const investorRes = await getInvestors(req.body.company);
-    var investors = investorRes?.cards?.investors.filter((investor) => {
+    let investors = investorRes?.cards?.investors.filter((investor) => {
       if (investor.investor_type === undefined) {
         return false;
       } else {
