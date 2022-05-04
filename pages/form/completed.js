@@ -70,19 +70,9 @@ export default function CompletedComparisons(props) {
   }
 
   function submitReferrals() {
-    var continueFunc = false;
-    emails.forEach((email) => {
-      if (email) {
-        continueFunc = true;
-      }
-    });
-    if (!continueFunc) {
-      return;
-    }
+    if (emails.every(email => !email)) return;
     ky.post(`${process.env.NEXT_PUBLIC_BASE_URL}${SUBMIT_REFERRALS}`, {
-      json: {
-        emails: emails,
-      },
+      json: { emails },
     });
     setDidRefer(true);
   }

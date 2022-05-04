@@ -37,7 +37,7 @@ export default withIronSessionApiRoute(
       //Get Investors below -> do comparisons -> create user object
       try {
         const investorRes = await getInvestors(companyCode);
-        const investors = investorRes?.cards?.investors.filter((investor) => {
+        const investors = investorRes.filter((investor) => {
           let retVal = true;
           if (investor.investor_type === undefined) {
             return false;
@@ -50,7 +50,7 @@ export default withIronSessionApiRoute(
             return retVal;
           }
         });
-        var investorsObjs = investors.map((i) => ({
+        let investorsObjs = investors.map((i) => ({
           image: i?.image_url || "",
           name: i?.identifier?.value,
           id: i?.identifier?.uuid,
