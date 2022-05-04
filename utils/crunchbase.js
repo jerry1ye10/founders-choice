@@ -53,12 +53,11 @@ export async function findPossibleCompanies(firstName, lastName) {
     ],
     limit: 50,
   };
-  var resp = await ky.post(COMPANIES_ENDPOINT, { json: body }).json();
   if (isEmpty(validPeople)) {
-    resp.entities = [];
+    return [];
   }
-
-  return resp;
+  const resp = await ky.post(COMPANIES_ENDPOINT, { json: body }).json();
+  return resp?.entities;
 }
 
 function isEmpty(obj) {
