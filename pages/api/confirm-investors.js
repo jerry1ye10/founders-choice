@@ -50,7 +50,7 @@ export default withIronSessionApiRoute(
             return retVal;
           }
         });
-        var investorsObjs = investors.map((i) => ({
+        let investorsObjs = investors.map((i) => ({
           image: i?.image_url || "",
           name: i?.identifier?.value,
           id: i?.identifier?.uuid,
