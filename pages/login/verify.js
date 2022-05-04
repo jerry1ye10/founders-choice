@@ -137,7 +137,7 @@ export default function SelectCompany({
   profile,
 }) {
   const [selectedCompany, setSelectedCompany] = useState(
-    initialCompanyOptions?.[0]
+    companyOptions?.[0]
   );
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
