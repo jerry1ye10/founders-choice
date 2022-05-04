@@ -8,12 +8,11 @@ import Loader from "../../components/Loader";
 
 /**
   Do redirects here
-  They either... AND Once approved by MTurk we can't allow user to generate comparisons for themselves again / continue to create MTurk calls
+  They either...
   A) have comparisons
   B) Are done with comparisons
-  C) Are not approved by MTurk -- DONE
-  D) Just got approved and havent confirmed their investors -- DONE
-  E) Haven't selected their company yet -- DONE
+  D) havent confirmed their investors
+  E) Haven't selected their company yet
 **/
 
 import {
@@ -81,8 +80,6 @@ export const getServerSideProps = withIronSessionSsr(
       };
     }
 
-    const hasSubmitted = Boolean(validationReq);
-
     if (first && last) {
       // TODO: Create ky instance with NEXT_PUBLIC_BASE_URL as prefixUrl
       const res = await ky
@@ -91,29 +88,13 @@ export const getServerSideProps = withIronSessionSsr(
         })
         .json();
 
-      const companies = res.entities;
-      var companyOptions = companies.map((c) => ({
-        value: c?.properties?.identifier?.permalink,
-        label: c?.properties?.identifier?.value,
-      }));
-
+      const companyOptions = res.options;
       if (!companyOptions) {
         companyOptions = [];
-      }
-      if (companyOptions.length === 0) {
-        const exceptionRef = db.collection("AdditionalFounders").doc(email);
-        const exceptionDoc = (await exceptionRef.get()).data();
-        if (exceptionDoc) {
-          companyOptions.push({
-            value: exceptionDoc?.companyName,
-            label: exceptionDoc?.companyName,
-          });
-        }
       }
 
       return {
         props: {
-          hasSubmitted,
           companyOptions,
           profile: req.session?.profile,
         },
@@ -152,15 +133,13 @@ export function VerificationInfo({ profile }) {
 }
 
 export default function SelectCompany({
-  companyOptions: initialCompanyOptions,
-  hasSubmitted: initialHasSubmitted,
+  companyOptions,
   profile,
 }) {
-  const [companyOptions] = useState(initialCompanyOptions);
   const [selectedCompany, setSelectedCompany] = useState(
     initialCompanyOptions?.[0]
   );
-  const [hasSubmitted, setHasSubmitted] = useState(initialHasSubmitted);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const router = useRouter();
 
