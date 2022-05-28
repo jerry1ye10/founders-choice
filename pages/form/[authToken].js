@@ -115,8 +115,7 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
           ))}
       </div>
       <h3 className="raleway text-lg sm:text-xl">
-        If there are any investors missing, please email us at
-        jerry1ye10@gmail.com
+        If there are any investors missing, please email us at jerry1ye10@gmail.com <b>before</b> you confirm.
       </h3>
       <button
         onClick={submitInvestors}
