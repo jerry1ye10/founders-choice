@@ -5,16 +5,13 @@ import ky from "ky-universal";
 import { AiFillPlusCircle } from "react-icons/ai";
 
 import { GET_FOUNDER_COUNT, SUBMIT_REFERRALS } from "../../utils/routes";
+const { NEXT_PUBLIC_BASE_URL } = process.env
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     try {
       const data = await ky
-        .get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}${GET_FOUNDER_COUNT}${
-            "/" + req.session.profile.id
-          }`
-        )
+        .get(`${NEXT_PUBLIC_BASE_URL}${GET_FOUNDER_COUNT}/${req.session.profile.id}`)
         .json();
 
       return {
@@ -124,16 +121,24 @@ export default function CompletedComparisons(props) {
       <div className="flex flex-col items-center justify-center text-center mx-24">
         <h2 className="raleway text-xl font-light mt-2 font-bold lg:px-20 w-full xs:w-1/2">
           Once we've collected data from 200 founders, we'll work to start
-          publishing our ranking list. If you'd like to help us, please share
-          this with your friends. Enter other founders you know below, and we'll
-          reach out to them!
+          publishing our ranking list. If you'd like to help us, please share this with your friends, or
+          {" "}
+          <a
+            href="https://twitter.com/share?text=Just submitted to Founder’s Choice, and you should too! They collect verified investor preferences from founders, to create a ranking of VCs.&url=https://founderschoicevc.com/"
+            className="inline-block text-grey-200 underline"
+            target="_blank"
+            >
+            tweet about us!
+          </a>
+          {" "}
+          Enter other founders you know below, and we'll reach out to them.
         </h2>
         {emails.map(function (email, index) {
           return (
-            <div class="w-full max-w-sm pt-4">
-              <div class="flex items-center py-2 ">
+            <div key={`${email}-${index}`} className="w-full max-w-sm pt-4">
+              <div className="flex items-center py-2 ">
                 <input
-                  class="montserrat w-64 mr-3 py-1 px-2 border border-black focus:outline-none flex-1"
+                  className="montserrat w-64 mr-3 py-1 px-2 border border-black focus:outline-none flex-1"
                   type="text"
                   placeholder="Enter Email Here"
                   aria-label="Email Entry"
@@ -144,7 +149,7 @@ export default function CompletedComparisons(props) {
                     setEmails(clone);
                   }}
                 />
-                <div class="flex w-8">
+                <div className="flex w-8">
                   {index === emails.length - 1 && (
                     <button style={{ fontSize: "30px" }} onClick={addEmail}>
                       <AiFillPlusCircle />{" "}
