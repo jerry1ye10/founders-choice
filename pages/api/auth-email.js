@@ -9,6 +9,8 @@ export default withIronSessionApiRoute(
       return;
     }
 
+    console.log("DING DING DING")
+
     const profileId = req.body.token;
 
     const validateRef = db.collection("MTurk").doc(profileId);
