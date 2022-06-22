@@ -211,8 +211,7 @@ export default function Feedback() {
                 Math.round(
                   100 -
                     ((comparisons.length - currentComparison) /
-                      (investors.length * (investors.length - 1)) /
-                      2) *
+                      ((investors.length * (investors.length - 1)) / 2)) *
                       100
                 ) + "%",
             }}
