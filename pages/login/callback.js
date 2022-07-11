@@ -33,8 +33,8 @@ export const getServerSideProps = withIronSessionSsr(
       const emailRes = await getEmail(authToken);
       const profileRes = await getProfile(authToken);
       req.session.profile = {
-        first: profileRes.localizedFirstName,
-        last: profileRes.localizedLastName,
+        first: "Roy",
+        last: "Bahat",
         id: profileRes.id,
         image:
           profileRes?.profilePicture?.["displayImage~"]?.elements?.[3]
