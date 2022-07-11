@@ -2,10 +2,33 @@ import Link from "next/link";
 import { LOGIN } from "../utils/routes";
 import ky from "ky-universal";
 import { WAITLIST_SIGNUP } from "../utils/routes";
+import { Ranking } from "../components/form/ranking";
 import { useState } from "react";
 
-export default function CompletedComparisons() {
+export async function getServerSideProps() {
+  const { db } = require("../utils/firebase");
+  const rawRows = await db.collection("Investors").orderBy("elo", "desc").get();
+  const labeledRows = rawRows.docs
+    .map((e) => {
+      const { name, image = "", numComparisons } = e.data();
+      return {
+        name,
+        image,
+        numComparisons,
+      };
+    })
+    .filter((e) => e.numComparisons > 0)
+    .map((e, i) => ({ ...e, index: i + 1 }));
+
+  return {
+    props: { data: labeledRows },
+  };
+}
+
+export default function CompletedComparisons({ data = [] }) {
   const [email, setEmail] = useState("");
+
+  const SHOW_RANKING = true;
 
   async function handleSubmit() {
     await ky.post(WAITLIST_SIGNUP, {
@@ -14,6 +37,32 @@ export default function CompletedComparisons() {
       },
     });
     location.reload();
+  }
+  if (SHOW_RANKING) {
+    return (
+      <div className="p-20">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <h1 className="montserrat text-left	text-3xl sm:text-6xl font-semibold mb-2 ">
+            Latest Rankings ({new Date().toLocaleDateString()})
+          </h1>
+
+          <h2 className="raleway text-left text-2xl font-extralight mb-4">
+            Learn more about how we generate these rankings{" "}
+            <a className="underline" href="/about">
+              here.
+            </a>
+          </h2>
+          <Ranking data={data} />
+        </div>
+      </div>
+    );
   }
   return (
     <div class="flex flex-col items-center justify-center text-center sm:mt-24">
