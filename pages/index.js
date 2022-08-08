@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Login from "./login"
+import Login from "./login";
 import logo from "../public/logo.svg";
 import { useRef } from "react";
 
 export default function Home() {
   const scrollTarget = useRef(null);
-  const scrollTo = () => scrollTarget && scrollTarget?.current?.scrollIntoView();
+  const scrollTo = () =>
+    scrollTarget && scrollTarget?.current?.scrollIntoView();
   return (
     <>
       <div className="text-center px-5 h-screen w-screen">
@@ -18,9 +19,7 @@ export default function Home() {
               A VC firm ranking, generated anonymously and verifiably,
             </span>
             <br />
-            <span inline-block>
-              {" "}by founders, for founders
-            </span>
+            <span inline-block> by founders, for founders</span>
           </h2>
           <button
             className="relative top-12 z-50 raleway font-light text-4xl bg-white rounded-full border-2 border-black p-8 py-4"
