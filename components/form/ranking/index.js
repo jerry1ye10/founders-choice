@@ -74,6 +74,9 @@ export const Ranking = ({ data }) => {
   // Render the UI for your table
   return (
     <table
+      style={{
+        "table-layout": "fixed",
+      }}
       {...getTableProps()}
       className="raleway font-extralight bg-gray-300 w-full"
     >

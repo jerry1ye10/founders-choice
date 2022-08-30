@@ -20,15 +20,11 @@ export default (displayBanner = false) => {
     <>
       {displayBanner && (
         <div class="bg-gray-300">
-          <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8 text-center">
-            <p class="font-medium">
+          <div class="max-w-7xl mx-auto py-6 px-3 sm:px-6 lg:px-8 text-center">
+            <p class="font-medium text-2xl">
               {" "}
-              We're excited to announce the release of our first founder
-              ranking! Check it out{" "}
-              <a href="/ranking" class="underline">
-                here
-              </a>
-              .{" "}
+              We're excited to announce the release of our first founder's
+              choice rankings!
             </p>
           </div>
         </div>
@@ -42,10 +38,10 @@ export default (displayBanner = false) => {
         {(!isIndex && isMobile) || (
           <>
             <a
-              href="/ranking"
+              href="/login/"
               className="raleway text-3xl font-light ml-auto mr-6"
             >
-              Ranking
+              Contribute
             </a>
             <a href="/about" className="raleway font-light text-3xl mr-6">
               About

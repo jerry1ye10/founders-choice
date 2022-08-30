@@ -7,18 +7,20 @@ import { useState } from "react";
 
 export async function getServerSideProps() {
   const { db } = require("../utils/firebase");
-  const rawRows = await db.collection("Investors").orderBy("elo", "desc").get();
+  const rawRows = await db.collection("Investors").orderBy("elo").get();
   const labeledRows = rawRows.docs
     .map((e) => {
-      const { name, image = "", numComparisons } = e.data();
+      const { name, image = "", numComparisons, elo } = e.data();
       return {
         name,
         image,
         numComparisons,
+        elo,
       };
     })
-    .filter((e) => e.numComparisons > 0)
-    .filter((e) => e.image !== "")
+    .filter((e) => e.numComparisons > 25)
+    .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
+    // .filter((e) => e.image !== "")
     .map((e, i) => ({ ...e, index: i + 1 }));
 
   return {
@@ -61,12 +63,6 @@ export default function CompletedComparisons({ data = [] }) {
             </a>
           </h2>
           <Ranking data={data} />
-          <h2 className="raleway text-left text-2xl font-extralight mb-4 mt-20">
-            Disclaimer: These rankings are based on a limited amount of data
-            from founders and should not be seen as definitive rankings. We
-            recommend doing your own diligence on VC firms. Visit our FAQ for
-            some recommended resources on doing diligence.
-          </h2>
         </div>
       </div>
     );
