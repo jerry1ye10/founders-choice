@@ -15,7 +15,7 @@ const RANKING_COLUMNS = [
     Header: "Name",
     Cell: ({ value: { image, name } }) => (
       <span>
-        <img className="object-scale-down bg-white inline w-10 h-10 mr-2 my-1" src={image} />
+        <img className="object-scale-down bg-white inline w-10 h-10 mr-6 my-1" src={image} />
         {name}
       </span>
     ),
