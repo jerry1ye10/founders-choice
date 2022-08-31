@@ -1,12 +1,14 @@
 import _ from "lodash";
 import { useMemo, useState } from "react";
-import { useTable, useGlobalFilter } from "react-table";
+import { useTable, useGlobalFilter, useFlexLayout } from "react-table";
 import Fuse from "fuse.js";
 
 const RANKING_COLUMNS = [
   {
     Header: "Rank",
     accessor: "index",
+    width: 15,
+    maxWidth: 15,
   },
   {
     id: "display",
@@ -69,7 +71,8 @@ export const Ranking = ({ data }) => {
       columns: RANKING_COLUMNS,
       data,
     },
-    useGlobalFilter
+    useGlobalFilter,
+    useFlexLayout
   );
 
   // Render the UI for your table
@@ -85,7 +88,7 @@ export const Ranking = ({ data }) => {
         <tr className="bg-gray-400 w-full">
           <th
             className="w-full p-8"
-            colSpan={visibleColumns.length}
+            colSpan={visibleColumns.length - 1}
             style={{
               textAlign: "left",
             }}
@@ -98,14 +101,14 @@ export const Ranking = ({ data }) => {
         </tr>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
+            {headerGroup.headers.filter(column => column.id !== 'name').map((column) => {
+              return <th
                 className="text-3xl border-b border-black font-extralight text-left px-6 py-2"
                 {...column.getHeaderProps()}
               >
                 {column.render("Header")}
               </th>
-            ))}
+            })}
           </tr>
         ))}
       </thead>
@@ -117,7 +120,7 @@ export const Ranking = ({ data }) => {
               className="text-2xl font-light text-left"
               {...row.getRowProps()}
             >
-              {row.cells.map((cell) => {
+              {row.cells.filter(cell => cell.column.id !== 'name').map((cell) => {
                 return (
                   <td className="px-6" {...cell.getCellProps()}>
                     {cell.render("Cell")}
