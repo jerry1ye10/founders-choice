@@ -21,6 +21,7 @@ const RANKING_COLUMNS = [
   },
   {
     accessor: "name",
+    Header: () => <></>,
     Cell: () => <></>,
   },
 ];
