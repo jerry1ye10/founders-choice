@@ -33,7 +33,7 @@ export default function Home({ data = [] }) {
     scrollTarget && scrollTarget?.current?.scrollIntoView();
   return (
     <>
-      <div className="text-center px-5 h-screen w-screen">
+      <div className="text-center px-5 w-screen" style={{ height: "70vh" }}>
         <div className="absolute w-full z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <h1 className="w-full relative montserrat text-5xl sm:text-7xl font-semibold">
             Founder’s Choice
