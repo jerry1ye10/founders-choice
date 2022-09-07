@@ -53,7 +53,7 @@ export default function CompletedComparisons({ data = [] }) {
           }}
         >
           <h1 className="montserrat text-left	text-3xl sm:text-6xl font-semibold mb-2 ">
-            Latest Rankings ({new Date().toLocaleDateString()})
+            Founder's Choice VC Leaderboard
           </h1>
 
           <h2 className="raleway text-left text-2xl font-extralight mb-4">
@@ -63,6 +63,16 @@ export default function CompletedComparisons({ data = [] }) {
             </a>
           </h2>
           <Ranking data={data} />
+          <h2 className="raleway text-left text-2xl font-extralight mb-4 mt-20">
+            There are over 400 firms we chose not to rank because they didn't
+            have enough comparisons. Specifically, we chose 25 comparisons as
+            our cutoff. If you're a founder and you want to help increase the
+            amount of firms on our list, please contribute to our rankings{" "}
+            <Link href="/login/">
+              <a class="underline text-blue-400">here</a>
+            </Link>
+            {""}.
+          </h2>
         </div>
       </div>
     );

@@ -28,38 +28,30 @@ export default function FAQ() {
       <p className={STYLED_PARA}>
         Choosing the right partners to sit on your cap table is one of the
         hardest decisions that a founder has to make. The wrong choice is
-        difficult to undo. Without knowing the right people, it can be difficult
-        to get reliable information on which firms to choose. We hope that by
-        havng venture-backed founders compare their investors on our site, we
-        can create a ranking of VC firms, allowing founders to easily find the
-        VC firms who are right for them. We verify that all founders are only
-        able to contribute to the rankings of VCs that have actually invested in
-        their startup. If you are a founder who’s raised money, we would love
-        your feedback! If not, we hope our rankings can be helpful to you.
+        difficult to undo. It can be difficult to get reliable information on
+        which firms to choose, especially if you’re newer to the industry.
       </p>
-
-      <h1 className={STYLED_HEADER}>FAQ</h1>
-      <h3 className={STYLED_SUBHEADER}>Where are the rankings?</h3>
       <p className={STYLED_PARA}>
-        Right now, we're focused on gathering feedback from founders to make
-        sure our rankings are as high quality as possible. Please be patient as
-        we gather data to ensure the quality of our rankings!
+        We hope that by collecting and processing founder rankings of investors,
+        we can democratize access to this information, allowing founders to
+        easily find the investors who are right for them. We verify that only
+        founders who have been backed by an investor can rank them. If you are a
+        founder who’s raised money, we would love for you to rate your
+        investors! If not, we hope our rankings can be helpful to you.
       </p>
-
+      <h1 className={STYLED_HEADER}>FAQ</h1>
       <h3 className={STYLED_SUBHEADER}>How do we calculate these rankings?</h3>
       <p className={STYLED_PARA}>
         We use an{" "}
-        <a href="https://en.wikipedia.org/wiki/Elo_rating_system">
-          {" "}
-          Elo-based algorithm{" "}
-        </a>
+        <Link href="https://en.wikipedia.org/wiki/Elo_rating_system">
+          <a class="underline text-blue-400"> Elo-based algorithm</a>
+        </Link>
         , which asks founders to choose their preferences among the VCs they’ve
         worked with. The advantage of this system is that it only accepts
         ratings from founders who have actually worked with these VCs, and it
         preserves anonymity of the founders while avoiding the vitriol on other
         review sites.
       </p>
-
       <h3 className={STYLED_SUBHEADER}>
         Which founders are able to contribute to these rankings?
       </h3>
@@ -67,7 +59,6 @@ export default function FAQ() {
         Any founder who has been backed by a VC, as shown on Crunchbase, can
         submit rankings.
       </p>
-
       <h3 className={STYLED_SUBHEADER}>
         As a founder, what precautions do you take to secure my data?
       </h3>
@@ -83,7 +74,6 @@ export default function FAQ() {
         </Link>{" "}
         so that you can see how we handle the data.
       </p>
-
       <h3 className={STYLED_SUBHEADER}>
         How do you validate who has invested in a startup?
       </h3>
@@ -92,7 +82,6 @@ export default function FAQ() {
         of a founder and check which VCs have backed their startup. We also
         invite founders to correct our data.
       </p>
-
       <h3 className={STYLED_SUBHEADER}>
         What do these rankings actually measure?
       </h3>
@@ -104,17 +93,13 @@ export default function FAQ() {
         of the firms that have invested in them. Specifically, we prompt them
         with the question “Which (firm) would you rather have as an investor?”
       </p>
-
       <h3 className={STYLED_SUBHEADER}>What is this ranking for?</h3>
       <p className={STYLED_PARA}>
-        Even though many angels are just as good if not better than VCs for
-        founders, and the specific partner sometimes matter more than the VC
-        firm, we are only ranking VC firms (and accelerators) because we need
-        enough data to present meaningful rankings. As of now, we are only
-        asking venture-backed founders (verified by Crunchbase) to complete the
-        rankings.
+        We are only ranking VC firms and accelerators in order to gather enough
+        data to present meaningful rankings. While angel investors and specific
+        partners play a key role in fundraising, they are not ranked in
+        Founder’s Choice.
       </p>
-
       <h3 className={STYLED_SUBHEADER}>
         What if a VC firm has only made a few investments or only invested small
         amounts, will that hurt their ranking?
@@ -127,17 +112,45 @@ export default function FAQ() {
         because they wrote a bigger check). This ranking is entirely about who
         founders see as most valuable.
       </p>
-
+      <h3 className={STYLED_SUBHEADER}>
+        How much data goes into creating these rankings?
+      </h3>
+      <p className={STYLED_PARA}>
+        Our first batch of rankings uses data from over 350 venture-backed
+        founders. We only rank VC firms on whom we have enough data. We only
+        include VC firms with more than 25 comparisons from founders.
+      </p>
+      <p className={STYLED_PARA}>
+        We recognize that our first leaderboards may be biased by the sample of
+        which VC’s portfolio companies submitted rankings, and we believe this
+        will get more balanced over time.
+      </p>
       <h3 className={STYLED_SUBHEADER}>
         How often will you update the rankings?
       </h3>
       <p className={STYLED_PARA}>
-        We need a certain minimum number of ratings from founders for our
-        ranking to be meaningful. So we intend to update the rankings only when
-        we have enough new ratings from founders. At the moment, our plan is to
-        update the rankings every six months, though that might change.
+        We’ve released our first ranking list! Check it out{" "}
+        <Link href={"/"}>
+          <a class="underline text-blue-400">here</a>
+        </Link>
+        {""}. For the future, we’ll be updating our rankings every three months.
+        Our next leaderboard will release in January 2023.
       </p>
-
+      <h3 className={STYLED_SUBHEADER}>
+        How else can I do diligence on my future investors?
+      </h3>
+      <p className={STYLED_PARA}>
+        Check out{" "}
+        <Link
+          href={
+            "https://also.roybahat.com/how-founders-might-check-vc-references-a13bcb169301"
+          }
+        >
+          <a class="underline text-blue-400">this</a>
+        </Link>{" "}
+        article by Roy Bahat at Bloomberg Beta, who’s helped to support this
+        project.
+      </p>
       <h3 className={STYLED_SUBHEADER}>
         Can you make the rankings more specific, like ranking which firms are
         most helpful in particular ways?
@@ -145,10 +158,9 @@ export default function FAQ() {
       <p className={STYLED_PARA}>
         At the moment, our focus is just to produce a general ranking – an
         alternative to the Midas List, which measures VCs in terms of their
-        investment returns, whether or not they were helpful to founders. We are
-        going to start by ranking firms on a general "who is most preferred by
-        founders who they have backed" basis. We might consider ways to make our
-        rankings more useful in the future, and we’re open to your suggestions.
+        investment returns – based on whether those VCs were helpful to
+        founders. We might consider ways to make our rankings more useful in the
+        future, and we’re open to your suggestions.
       </p>
       <h3 className={STYLED_SUBHEADER}>Who built this?</h3>
       <p className={STYLED_PARA}>
@@ -163,11 +175,9 @@ export default function FAQ() {
         </Link>
         .
       </p>
-
       <h1 className={`${STYLED_HEADER} text-center mt-8 text-6xl`}>
         Our Sponsors
       </h1>
-
       <div className="flex items-center justify-center">
         <Image
           src={Angels}
@@ -223,7 +233,6 @@ export default function FAQ() {
         />
       </div>
       <br />
-
       <p className={`${STYLED_PARA} mt-12`}>
         Although we have venture capital firms as sponsors for this project,
         they do not have access to any of the data nor are they able to
