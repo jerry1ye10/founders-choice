@@ -4,7 +4,7 @@ import logo from "../public/logo.svg";
 import { useRef } from "react";
 import CompletedComparisons from "./ranking";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { db } = require("../utils/firebase");
   const rawRows = await db.collection("Investors").orderBy("elo").get();
   const labeledRows = rawRows.docs
