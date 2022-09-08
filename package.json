@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-mturk": "^3.41.0",
+    "@netlify/esbuild": "^0.14.25",
     "crypto": "^1.0.1",
     "elo-rating": "^1.0.1",
     "firebase": "^9.4.1",
