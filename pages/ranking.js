@@ -20,7 +20,6 @@ export async function getServerSideProps() {
     })
     .filter((e) => e.numComparisons > 25)
     .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
-    // .filter((e) => e.image !== "")
     .map((e, i) => ({ ...e, index: i + 1 }));
 
   return {
@@ -28,10 +27,10 @@ export async function getServerSideProps() {
   };
 }
 
+const SHOW_RANKING = true;
+
 export default function CompletedComparisons({ data = [] }) {
   const [email, setEmail] = useState("");
-
-  const SHOW_RANKING = true;
 
   async function handleSubmit() {
     await ky.post(WAITLIST_SIGNUP, {
@@ -43,7 +42,7 @@ export default function CompletedComparisons({ data = [] }) {
   }
   if (SHOW_RANKING) {
     return (
-      <div className="p-20">
+      <div className="sm:p-20 p-4 mt-12">
         <div
           style={{
             display: "flex",
