@@ -20,6 +20,21 @@ export default (displayBanner = false) => {
 
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
   }
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (seconds < 10) {
+      return (
+        <span>
+          {hours}:{minutes}:0{seconds}
+        </span>
+      );
+    }
+    // Render a countdown
+    return (
+      <span>
+        {hours}:{minutes}:{seconds}
+      </span>
+    );
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -34,6 +49,8 @@ export default (displayBanner = false) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const deadline = new Date("2022-09-10 UTC-4");
+
   return (
     <>
       {isIndex && (
@@ -42,7 +59,8 @@ export default (displayBanner = false) => {
             <p class="font-medium text-2xl">
               {" "}
               We're releasing our first ranking list soon. Get your rankings in
-              now! Time remaining: {countdown} days
+              now! Time remaining:{" "}
+              {<Countdown date={deadline} renderer={renderer} />}
             </p>
           </div>
         </div>
