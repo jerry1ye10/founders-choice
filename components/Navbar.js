@@ -1,4 +1,4 @@
-import { difference } from "lodash";
+import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Countdown from "react-countdown";
@@ -58,9 +58,11 @@ export default (displayBanner = false) => {
           <div class="max-w-7xl mx-auto py-6 px-3 sm:px-6 lg:px-8 text-center">
             <p class="font-medium text-2xl">
               {" "}
-              We're releasing our first ranking list soon. Get your rankings in
-              now! Time remaining:{" "}
-              {<Countdown date={deadline} renderer={renderer} />}
+              We're releasing our first ranking list soon! Sign up to be notified when they go live
+              {" "}
+              <Link href="/ranking">
+                <a className="underline">here</a>
+              </Link>.
             </p>
           </div>
         </div>
