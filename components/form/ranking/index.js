@@ -25,8 +25,11 @@ const RANKING_COLUMNS = [
     Header: "Name",
     Cell: ({ value: { image, name } }) => (
       <span className="sm:text-2xl text-xl flex content-center">
-        <img className="object-scale-down bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1" src={image} />
-        <div className="inline-block">{name}</div>
+        {image 
+          ? <img className="object-scale-down bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1" src={image} />
+          : <div className="bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1"/>
+        }
+        <div className="flex items-center">{name}</div>
       </span>
     ),
     accessor: ({ image, name }) => ({ image, name }),
@@ -70,10 +73,6 @@ export const Ranking = ({ data }) => {
     pageOptions,
     page,
     gotoPage,
-    previousPage,
-    nextPage,
-    canPreviousPage,
-    canNextPage,
   } = useTable(
     {
       columns: RANKING_COLUMNS,
