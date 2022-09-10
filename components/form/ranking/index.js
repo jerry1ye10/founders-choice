@@ -92,6 +92,7 @@ export const Ranking = ({ data }) => {
     <>
       <div className="sm:mb-4 mb-2">
         <Paginate
+          forcePage={pageIndex}
           containerClassName={`sm:mt-6 mt-2 inline-flex sm:text-lg text-xs -space-x-px`}
           previousLinkClassName={`sm:py-2 sm:px-3 p-1 ml-0 leading-tight text-black	 bg-gray-300 rounded-l-lg border hover:bg-gray-400 hover:text-gray-200`}
           pageLinkClassName={`sm:py-2 sm:px-3 p-1 leading-tight text-black bg-gray-300 border hover:bg-gray-400 hover:text-gray-200`}
