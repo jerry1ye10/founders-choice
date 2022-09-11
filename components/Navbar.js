@@ -1,17 +1,14 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export default (displayBanner = false) => {
+export default function Navbar() {
   const router = useRouter();
   const isIndex = router.pathname === `/`;
-  const isRanking = router.pathname === "/ranking";
-  const isAbout = router.pathname === "/about";
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 768);
-    }
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -20,7 +17,7 @@ export default (displayBanner = false) => {
     <>
       <nav className="flex top-0 inline-block w-screen p-6">
         {isIndex || (
-          <a href="/" className="raleway text-4xl font-bold mr-6">
+          <a href="/" className="raleway sm:text-4xl text-xl font-bold mr-6">
             Founder's Choice
           </a>
         )}
