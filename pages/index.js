@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Login from "./login";
 import logo from "../public/logo.svg";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import CompletedComparisons from "./ranking";
 
 export async function getStaticProps() {
@@ -30,14 +29,22 @@ export async function getStaticProps() {
 export default function Home({ data = [] }) {
   const scrollTarget = useRef(null);
   const scrollTo = () => scrollTarget?.current?.scrollIntoView?.();
+
   return (
     <>
-      <div className="text-center px-5 w-screen" style={{ height: "70vh" }}>
-        <div className="absolute w-full z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="w-full relative montserrat text-5xl sm:text-7xl font-semibold">
+      <div className="text-center px-5 w-screen flex-col flex sm:block hidden" >
+        <div className="w-full z-50 items-center" style={{ 
+        paddingTop: "12vw",
+        paddingBottom: "12vw",
+        backgroundImage: "url('/logo.svg')",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: '100% 100%',
+       }}>
+          <h1 className="w-full relative montserrat text-3xl sm:text-7xl font-semibold">
             Founder's Choice
           </h1>
-          <h2 className="container mx-auto relative raleway text-4xl font-extralight mt-8 z-50">
+          <h2 className="container mx-auto relative raleway text-2xl sm:text-4xl font-extralight mt-8 z-50">
             <span inline-block>
               A VC firm ranking, generated anonymously and verifiably,
             </span>
@@ -45,14 +52,11 @@ export default function Home({ data = [] }) {
             <span inline-block> by founders, for founders</span>
           </h2>
           <button
-            className="relative top-12 z-50 raleway font-light text-4xl bg-white rounded-full border-2 border-black p-8 py-4"
+            className="relative top-12 z-50 raleway font-light text-xl sm:text-4xl bg-white rounded-full border-2 border-black p-8 py-4"
             onClick={scrollTo}
           >
             View Rankings
           </button>
-        </div>
-        <div className="z-0 w-4/5 sm:w-2/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <Image src={logo} />
         </div>
       </div>
       <div ref={scrollTarget}>

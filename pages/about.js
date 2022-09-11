@@ -8,13 +8,13 @@ import Crunchbase from "../public/logos/crunchbase.png";
 import Precursor from "../public/logos/precursor.png";
 
 const STYLED_HEADER = `
-  montserrat text-5xl font-semibold sm:my-8
+  montserrat text-5xl font-semibold sm:my-8 mb-2 sm:mb-0 mb-4
 `;
 
 const PUBLIC_REPO = "https://github.com/jerry1ye10/founders-choice";
 
 const STYLED_SUBHEADER = `
-  montserrat text-3xl font-semibold mb-2
+  montserrat text-3xl font-semibold
 `;
 
 const STYLED_PARA = `

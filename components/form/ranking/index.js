@@ -27,7 +27,7 @@ const RANKING_COLUMNS = [
       <span className="sm:text-2xl text-xl flex content-center">
         {image 
           ? <img className="object-scale-down bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1" src={image} />
-          : <div className="bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1"/>
+          : <div className="inline w-10 h-10 sm:mr-6 mr-2 my-1"/>
         }
         <div className="flex items-center">{name}</div>
       </span>
