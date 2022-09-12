@@ -170,7 +170,7 @@ export const Ranking = ({ data }) => {
                 .map((column) => {
                   return (
                     <th
-                      className="sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2"
+                      className={`sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2 ${column.id === "elo" || column.id === "numComparisons" ? "hidden sm:block" : ""}`}
                       {...column.getHeaderProps()}
                     >
                       {column.render("Header")}
@@ -192,7 +192,7 @@ export const Ranking = ({ data }) => {
                   .filter((cell) => cell.column.id !== "name")
                   .map((cell) => {
                     return (
-                      <td className="px-6" {...cell.getCellProps()}>
+                      <td className={`px-6 ${cell.column.id === "elo" || cell.column.id === "numComparisons" ? "hidden sm:block" : ""}`} {...cell.getCellProps()}>
                         {cell.render("Cell")}
                       </td>
                     );
