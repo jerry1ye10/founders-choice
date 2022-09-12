@@ -74,13 +74,17 @@ export default function CompletedComparisons({ data = [] }) {
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md">
             Disclaimer: Even though we want our ranking to be as comprehensive
             as possible, we recommend doing your own diligence on VC firms.
-            Visit our About page for some recommended resources on doing
-            diligence.
+            Visit our{" "}
+            <Link href="/about/">
+              <a class="underline text-blue-400">About</a>
+            </Link>{" "}
+            page for some recommended resources on doing diligence.
           </h2>
 
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md lg:hidden">
-            Note: Because of your smaller screen size, the number of comparisons
-            and elo data for each firm isn't being presented.
+            Note: On the desktop version of this site, we show more data on each
+            firm, including the number of comparisons they received and elo
+            score.
           </h2>
         </div>
       </div>
