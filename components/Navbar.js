@@ -27,7 +27,7 @@ export default function Navbar() {
               href="/login/"
               className="raleway text-3xl font-light ml-auto mr-6"
             >
-              Founders: Rank VCs
+              Rank your VCs
             </a>
             <a href="/about" className="raleway font-light text-3xl mr-6">
               About
@@ -37,4 +37,4 @@ export default function Navbar() {
       </nav>
     </>
   );
-};
+}
