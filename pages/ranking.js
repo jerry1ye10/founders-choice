@@ -74,7 +74,7 @@ export default function CompletedComparisons({ data = [] }) {
             {""}
           </h2>
 
-          <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 text-md visible lg:invisible">
+          <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md lg:hidden">
             Note: Because of your smaller screen size, the number of comparisons
             and elo data for each firm isn't being presented.
           </h2>
