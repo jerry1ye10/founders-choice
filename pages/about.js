@@ -45,12 +45,12 @@ export default function FAQ() {
         We use an{" "}
         <Link href="https://en.wikipedia.org/wiki/Elo_rating_system">
           <a class="underline text-blue-400"> Elo-based algorithm</a>
-        </Link>
-        , which asks founders to choose their preferences among the VCs they’ve
-        worked with. The advantage of this system is that it only accepts
-        ratings from founders who have actually worked with these VCs, and it
-        preserves anonymity of the founders while avoiding the vitriol on other
-        review sites.
+        </Link>{" "}
+        (a pairwise comparison), which asks founders to choose their preferences
+        among the VCs they’ve worked with. The advantage of this system is that
+        it only accepts ratings from founders who have actually worked with
+        these VCs, and it preserves anonymity of the founders while avoiding the
+        vitriol on other review sites.
       </p>
       <h3 className={STYLED_SUBHEADER}>
         Which founders are able to contribute to these rankings?
@@ -75,12 +75,12 @@ export default function FAQ() {
         so that you can see how we handle the data.
       </p>
       <h3 className={STYLED_SUBHEADER}>
-        How do you validate who has invested in a startup?
+        How do you validate who has invested in a company?
       </h3>
       <p className={STYLED_PARA}>
         We use a combination of Linkedin and Crunchbase to verify the identity
-        of a founder and check which VCs have backed their startup. We also
-        invite founders to correct our data.
+        of a founder and check which investors have backed their company. We
+        also invite founders to correct our data.
       </p>
       <h3 className={STYLED_SUBHEADER}>
         What do these rankings actually measure?
@@ -116,14 +116,15 @@ export default function FAQ() {
         How much data goes into creating these rankings?
       </h3>
       <p className={STYLED_PARA}>
-        Our first batch of rankings uses data from over 350 venture-backed
+        Our first batch of rankings uses data from over 375 venture-backed
         founders. We only rank VC firms on whom we have enough data. We only
         include VC firms with more than 25 comparisons from founders.
       </p>
       <p className={STYLED_PARA}>
         We recognize that our first leaderboards may be biased by the sample of
-        which VC’s portfolio companies submitted rankings, and we believe this
-        will get more balanced over time.
+        which VC’s portfolio companies submitted rankings, but we believe that
+        over time the leaderboards will reflect a broader pool of rankings as
+        more founders submit.
       </p>
       <h3 className={STYLED_SUBHEADER}>
         How often will you update the rankings?

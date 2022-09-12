@@ -1,34 +1,72 @@
 import _ from "lodash";
 import { useState } from "react";
-import { useTable, useGlobalFilter, useFlexLayout, usePagination } from "react-table";
-import Paginate from "react-paginate"
+import Link from "next/link";
+import {
+  useTable,
+  useGlobalFilter,
+  useFlexLayout,
+  usePagination,
+} from "react-table";
+import Paginate from "react-paginate";
 
 const RANKING_COLUMNS = [
   {
-    Header: () => <div className="sm:block hidden">#</div>,
-    Cell: ({ value }) => <div className="sm:block hidden">{value}</div>,
+    Header: () => <div className="">#</div>,
+    Cell: ({ value }) => (
+      <div className="flex items-center w-8 h-8 my-1">{value}</div>
+    ),
     accessor: "index",
-    minWidth: 0,
+    minWidth: 3,
     width: 6,
     maxWidth: 15,
   },
   {
-    Header: () => <div className="sm:text-2xl text-xl -ml-12 sm:ml-0">Elo</div>,
+    Header: () => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 sm:block hidden">
+        <Link href={"https://en.wikipedia.org/wiki/Elo_rating_system"}>
+          <a class="underline text-blue-400">Elo</a>
+        </Link>
+      </div>
+    ),
     accessor: "elo",
-    Cell: ({ value }) => <div className="sm:text-2xl text-xl -ml-12 sm:ml-0">{Math.round(value)}</div>,
-    minWidth: 3,
-    width: 10,
-    maxWidth: 15,
+    Cell: ({ value }) => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 sm:block hidden w-8 h-8 my-1">
+        <div className="flex items-center">{Math.round(value)} </div>
+      </div>
+    ),
+    minWidth: 0,
+    width: 15,
+    maxWidth: 20,
+  },
+  {
+    Header: () => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden">
+        Comparisons
+      </div>
+    ),
+    accessor: "numComparisons",
+    Cell: ({ value }) => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden w-8 h-8 my-1">
+        <div className="flex items-center">{Math.round(value)} </div>
+      </div>
+    ),
+    minWidth: 0,
+    width: 35,
+    maxWidth: 40,
   },
   {
     id: "display",
     Header: "Name",
     Cell: ({ value: { image, name } }) => (
       <span className="sm:text-2xl text-xl flex content-center">
-        {image 
-          ? <img className="object-scale-down bg-white inline w-10 h-10 sm:mr-6 mr-2 my-1" src={image} />
-          : <div className="inline w-10 h-10 sm:mr-6 mr-2 my-1"/>
-        }
+        {image ? (
+          <img
+            className="object-scale-down bg-white inline w-8 h-8 sm:mr-6 mr-2 my-1"
+            src={image}
+          />
+        ) : (
+          <div className="inline w-8 h-8 sm:mr-6 mr-2 my-1" />
+        )}
         <div className="flex items-center">{name}</div>
       </span>
     ),
@@ -39,7 +77,6 @@ const RANKING_COLUMNS = [
     Header: () => <></>,
     Cell: () => <></>,
   },
-
 ];
 
 function GlobalFilter({ globalFilter, setGlobalFilter }) {
@@ -82,7 +119,6 @@ export const Ranking = ({ data }) => {
     useFlexLayout,
     usePagination
   );
-
 
   const handlePageClick = (event) => gotoPage(event.selected);
 
@@ -129,14 +165,18 @@ export const Ranking = ({ data }) => {
           </tr>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.filter(column => column.id !== 'name').map((column) => {
-                return <th
-                  className="sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2"
-                  {...column.getHeaderProps()}
-                >
-                  {column.render("Header")}
-                </th>
-              })}
+              {headerGroup.headers
+                .filter((column) => column.id !== "name")
+                .map((column) => {
+                  return (
+                    <th
+                      className="sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2"
+                      {...column.getHeaderProps()}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  );
+                })}
             </tr>
           ))}
         </thead>
@@ -148,13 +188,15 @@ export const Ranking = ({ data }) => {
                 className="text-2xl font-light text-left"
                 {...row.getRowProps()}
               >
-                {row.cells.filter(cell => cell.column.id !== 'name').map((cell) => {
-                  return (
-                    <td className="px-6" {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
+                {row.cells
+                  .filter((cell) => cell.column.id !== "name")
+                  .map((cell) => {
+                    return (
+                      <td className="px-6" {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
               </tr>
             );
           })}
