@@ -1,7 +1,6 @@
 import crypto from "crypto";
 import { withIronSessionApiRoute } from "iron-session/next";
 import { db, admin } from "../../utils/firebase";
-import { updateElo } from "../../utils/elo";
 
 export default withIronSessionApiRoute(
   async function handler(req, res) {
