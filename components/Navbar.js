@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Countdown from "react-countdown";
 
-export default (displayBanner = false) => {
+export default function Navbar() {
   const router = useRouter();
   const isIndex = router.pathname === `/`;
-  const isRanking = router.pathname === "/ranking";
-  const isAbout = router.pathname === "/about";
   const [isMobile, setIsMobile] = useState(false);
   const [countdown, setCountDown] = useState(0);
 
@@ -37,14 +35,8 @@ export default (displayBanner = false) => {
   };
 
   useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 768);
-    }
-    const current = new Date();
-    const deadline = new Date("2022-09-10");
-    const difference = dateDiffInDays(current, deadline);
-    setCountDown(difference);
-
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -53,34 +45,19 @@ export default (displayBanner = false) => {
 
   return (
     <>
-      {isIndex && (
-        <div class="bg-gray-300">
-          <div class="max-w-7xl mx-auto py-6 px-3 sm:px-6 lg:px-8 text-center">
-            <p class="font-medium text-2xl">
-              {" "}
-              We're releasing our first ranking list soon! Sign up to be notified when they go live
-              {" "}
-              <Link href="/ranking">
-                <a className="underline">here</a>
-              </Link>.
-            </p>
-          </div>
-        </div>
-      )}
-
       <nav className="flex top-0 inline-block w-screen p-6">
         {isIndex || (
-          <a href="/" className="raleway text-4xl font-bold mr-6">
+          <a href="/" className="raleway sm:text-4xl text-xl font-bold mr-6">
             Founder's Choice
           </a>
         )}
         {(!isIndex && isMobile) || (
           <>
             <a
-              href="/ranking"
+              href="/login/"
               className="raleway text-3xl font-light ml-auto mr-6"
             >
-              Ranking
+              Rank your VCs
             </a>
             <a href="/about" className="raleway font-light text-3xl mr-6">
               About
@@ -90,4 +67,4 @@ export default (displayBanner = false) => {
       </nav>
     </>
   );
-};
+}
