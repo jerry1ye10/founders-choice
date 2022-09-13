@@ -1,5 +1,8 @@
 # Founder's Choice 
 
+### Update 
+We've officially launched our 
+
 ### About 
 Choosing the right partners to sit on your cap table is one of the hardest decisions that a founder has to make. The wrong choice is difficult to undo. Without knowing the right people, it can be difficult to get reliable information on which firms to choose. We hope that by collecting and processing venture-backed founder preferrences of investors, we can democratize access to this information, allowing founders to easily find the VC firms who are right for them. We verify that all founders are only able to contribute to the rankings of VCs that have actually invested in their startup. 
 
