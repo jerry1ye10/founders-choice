@@ -2,9 +2,34 @@ import Link from "next/link";
 import { LOGIN } from "../utils/routes";
 import ky from "ky-universal";
 import { WAITLIST_SIGNUP } from "../utils/routes";
+import { Ranking } from "../components/form/ranking";
 import { useState } from "react";
 
-export default function CompletedComparisons() {
+export async function getServerSideProps() {
+  const { db } = require("../utils/firebase");
+  const rawRows = await db.collection("Investors").orderBy("elo").get();
+  const labeledRows = rawRows.docs
+    .map((e) => {
+      const { name, image = "", numComparisons, elo } = e.data();
+      return {
+        name,
+        image,
+        numComparisons,
+        elo,
+      };
+    })
+    .filter((e) => e.numComparisons > 25)
+    .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
+    .map((e, i) => ({ ...e, index: i + 1 }));
+
+  return {
+    props: { data: labeledRows },
+  };
+}
+
+const SHOW_RANKING = true;
+
+export default function CompletedComparisons({ data = [] }) {
   const [email, setEmail] = useState("");
 
   async function handleSubmit() {
@@ -14,6 +39,56 @@ export default function CompletedComparisons() {
       },
     });
     location.reload();
+  }
+  if (SHOW_RANKING) {
+    return (
+      <div className="sm:px-20 p-4 sm:mt-6 mt-2">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <h1 className="montserrat text-left	text-3xl sm:text-6xl font-semibold mb-2 ">
+            Founder's Choice VC Leaderboard
+          </h1>
+
+          <h2 className="raleway text-left text-2xl font-extralight mb-4">
+            Learn more about how we generate these rankings{" "}
+            <a className="underline" href="/about">
+              here
+            </a>
+          </h2>
+          <Ranking data={data} />
+          <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
+            We only include firms where we received 25 or more comparisons to
+            other firms.If you're a founder and you want to help increase the
+            amount of firms on our list, please contribute to our rankings{" "}
+            <Link href="/login/">
+              <a class="underline text-blue-400">here</a>
+            </Link>
+            . We intend to update the leaderboard every three months.
+          </h2>
+          <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md">
+            Disclaimer: Even though we want our ranking to be as comprehensive
+            as possible, we recommend doing your own diligence on VC firms.
+            Visit our{" "}
+            <Link href="/about/">
+              <a class="underline text-blue-400">About</a>
+            </Link>{" "}
+            page for some recommended resources on doing diligence.
+          </h2>
+
+          <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md lg:hidden">
+            Note: On the desktop version of this site, we show more data on each
+            firm, including the number of comparisons they received and elo
+            score.
+          </h2>
+        </div>
+      </div>
+    );
   }
   return (
     <div class="flex flex-col items-center justify-center text-center sm:mt-24">

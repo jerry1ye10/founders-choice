@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-mturk": "^3.41.0",
+    "@netlify/esbuild": "^0.14.25",
     "crypto": "^1.0.1",
     "elo-rating": "^1.0.1",
     "firebase": "^9.4.1",
@@ -22,7 +23,9 @@
     "react-countdown": "^2.3.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-paginate": "^8.1.3",
     "react-select": "^5.2.1",
+    "react-table": "^7.8.0",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
