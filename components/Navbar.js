@@ -1,10 +1,38 @@
+import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Countdown from "react-countdown";
 
 export default function Navbar() {
   const router = useRouter();
   const isIndex = router.pathname === `/`;
   const [isMobile, setIsMobile] = useState(false);
+  const [countdown, setCountDown] = useState(0);
+
+  function dateDiffInDays(a, b) {
+    // Discard the time and time-zone information.
+    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  }
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (seconds < 10) {
+      return (
+        <span>
+          {hours}:{minutes}:0{seconds}
+        </span>
+      );
+    }
+    // Render a countdown
+    return (
+      <span>
+        {hours}:{minutes}:{seconds}
+      </span>
+    );
+  };
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -12,6 +40,8 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const deadline = new Date("2022-09-10 UTC-4");
 
   return (
     <>

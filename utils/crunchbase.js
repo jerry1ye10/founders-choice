@@ -74,12 +74,12 @@ export async function getInvestors(companyId) {
         headers: { Accept: "application/json" },
       })
     ).json();
-    const investors = companiesInvestors?.cards?.investors;
+    let investors = companiesInvestors?.cards?.investors;
     const overriddenInvestorsSnapshot = await db.collection("AdditionalInvestors").doc(companyId).get()
     if (overriddenInvestorsSnapshot?.exists) {
+      if (overriddenInvestorsSnapshot.data()?.override) investors = [];
       const additionalInvestorsSlugs = overriddenInvestorsSnapshot.data()?.investors;
       for (const investorSlug of additionalInvestorsSlugs) {
-        
         const investorData = await getInvestorBySlug(investorSlug);
         investors.push(investorData);
       }
@@ -113,6 +113,7 @@ export async function createInvestor(investor) {
       elo: 1000,
       name: investor.name,
       numComparisons: 0,
+      image: investor?.image_url
     };
     investorRef.set(investorData);
   }
