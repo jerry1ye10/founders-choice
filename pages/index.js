@@ -8,12 +8,13 @@ export async function getStaticProps() {
   const rawRows = await db.collection("Investors").orderBy("elo").get();
   const labeledRows = rawRows.docs
     .map((e) => {
-      const { name, image = "", numComparisons, elo } = e.data();
+      const { name, image = "", numComparisons, elo, uniqueCount } = e.data();
       return {
         name,
         image,
         numComparisons,
         elo,
+        uniqueCount,
       };
     })
     .filter((e) => e.numComparisons > 25)

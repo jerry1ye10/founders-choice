@@ -5,28 +5,6 @@ import { WAITLIST_SIGNUP } from "../utils/routes";
 import { Ranking } from "../components/form/ranking";
 import { useState } from "react";
 
-export async function getServerSideProps() {
-  const { db } = require("../utils/firebase");
-  const rawRows = await db.collection("Investors").orderBy("elo").get();
-  const labeledRows = rawRows.docs
-    .map((e) => {
-      const { name, image = "", numComparisons, elo } = e.data();
-      return {
-        name,
-        image,
-        numComparisons,
-        elo,
-      };
-    })
-    .filter((e) => e.numComparisons > 25)
-    .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
-    .map((e, i) => ({ ...e, index: i + 1 }));
-
-  return {
-    props: { data: labeledRows },
-  };
-}
-
 const SHOW_RANKING = true;
 
 export default function CompletedComparisons({ data = [] }) {
