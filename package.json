@@ -29,7 +29,7 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.0.0-beta.11",
+    "@netlify/plugin-nextjs": "^4.29.3",
     "autoprefixer": "^10.2.6",
     "dotenv": "^16.0.0",
     "eslint": "7.32.0",
