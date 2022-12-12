@@ -55,6 +55,22 @@ const RANKING_COLUMNS = [
     maxWidth: 40,
   },
   {
+    Header: () => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden">
+        Unique Founders
+      </div>
+    ),
+    accessor: "uniqueCount",
+    Cell: ({ value }) => (
+      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden w-8 h-8 my-1">
+        <div className="flex items-center">{Math.round(value)} </div>
+      </div>
+    ),
+    minWidth: 0,
+    width: 35,
+    maxWidth: 40,
+  },
+  {
     id: "display",
     Header: "Name",
     Cell: ({ value: { image, name } }) => (
@@ -170,7 +186,11 @@ export const Ranking = ({ data }) => {
                 .map((column) => {
                   return (
                     <th
-                      className={`sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2 ${column.id === "elo" || column.id === "numComparisons" ? "hidden sm:block" : ""}`}
+                      className={`sm:text-2xl text-xl border-b border-black font-extralight text-left px-6 py-2 ${
+                        column.id === "elo" || column.id === "numComparisons"
+                          ? "hidden sm:block"
+                          : ""
+                      }`}
                       {...column.getHeaderProps()}
                     >
                       {column.render("Header")}
@@ -192,7 +212,15 @@ export const Ranking = ({ data }) => {
                   .filter((cell) => cell.column.id !== "name")
                   .map((cell) => {
                     return (
-                      <td className={`px-6 ${cell.column.id === "elo" || cell.column.id === "numComparisons" ? "hidden sm:block" : ""}`} {...cell.getCellProps()}>
+                      <td
+                        className={`px-6 ${
+                          cell.column.id === "elo" ||
+                          cell.column.id === "numComparisons"
+                            ? "hidden sm:block"
+                            : ""
+                        }`}
+                        {...cell.getCellProps()}
+                      >
                         {cell.render("Cell")}
                       </td>
                     );
