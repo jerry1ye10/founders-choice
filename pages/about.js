@@ -176,8 +176,8 @@ export default function FAQ() {
         </Link>
         .
       </p>
-      <h1 className={`${STYLED_HEADER} text-center mt-8 text-6xl`}>
-        Our Sponsors
+      <h1 className={`${STYLED_HEADER} text-center mt-8 mb-8 text-6xl`}>
+        Our Founding Sponsors
       </h1>
       <div className="flex items-center justify-center">
         <Image
