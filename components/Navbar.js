@@ -45,6 +45,8 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const deadline = new Date("2022-09-10 UTC-4");
+
   return (
     <>
       {isIndex && (

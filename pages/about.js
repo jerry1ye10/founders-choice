@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Angellist from "../public/logos/angellist.png";
 import Angels from "../public/logos/angels.png";
-import Beta from "../public/logos/beta.jpg";
+import Beta from "../public/logos/beta.png";
 import BBG from "../public/logos/bbg.png";
 import Crunchbase from "../public/logos/crunchbase.png";
 import Precursor from "../public/logos/precursor.png";
