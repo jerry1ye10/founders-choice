@@ -1,34 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LOGIN } from "../utils/routes";
 import ky from "ky-universal";
 import { WAITLIST_SIGNUP } from "../utils/routes";
 import { Ranking } from "../components/form/ranking";
 import { useState } from "react";
-
-export async function getServerSideProps() {
-  const { db } = require("../utils/firebase");
-  const rawRows = await db.collection("Investors").orderBy("elo").get();
-  const labeledRows = rawRows.docs
-    .map((e) => {
-      const { name, image = "", numComparisons, elo } = e.data();
-      return {
-        name,
-        image,
-        numComparisons,
-        elo,
-      };
-    })
-    .filter((e) => e.numComparisons > 25)
-    .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
-    .map((e, i) => ({ ...e, index: i + 1 }));
-
-  return {
-    props: { data: labeledRows },
-  };
-}
-
+import Beta from "../public/logos/beta.png";
+import SignalFire from "../public/logos/signalfire.png";
+import Crunchbase from "../public/logos/crunchbase.png";
+import Precursor from "../public/logos/precursor.png";
 const SHOW_RANKING = true;
-
+const STYLED_HEADER = `
+  montserrat text-5xl font-semibold sm:my-8 mb-2 sm:mb-0 mb-4
+`;
 export default function CompletedComparisons({ data = [] }) {
   const [email, setEmail] = useState("");
 
@@ -62,14 +46,54 @@ export default function CompletedComparisons({ data = [] }) {
             </a>
           </h2>
           <Ranking data={data} />
+          <h1
+            className={`montserrat text-5xl font-semibold sm:my-8 sm:mb-0 mb-4 text-center mt-12 lg:mt-16`}
+          >
+            Thank you to our supporters
+          </h1>
+
+          <div className="flex items-center justify-center">
+            <Image
+              height="200"
+              src={SignalFire}
+              layout="fixed"
+              alt="BBG Ventures"
+              objectFit="contain"
+            />
+            <Image
+              src={Crunchbase}
+              height="200"
+              layout="fixed"
+              alt="Crunchbase"
+              objectFit="contain"
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              src={Precursor}
+              layout="fixed"
+              width="500"
+              height="130"
+              alt="Precursor Ventures"
+              objectFit="contain"
+            />
+            <div className="flex items-center justify-center">
+              <Image
+                src={Beta}
+                height="130"
+                alt="Bloomberg Beta"
+                objectFit="contain"
+              />
+            </div>
+          </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
             We only include firms where we received 25 or more comparisons to
-            other firms.If you're a founder and you want to help increase the
+            other firms. If you're a founder and you want to help increase the
             amount of firms on our list, please contribute to our rankings{" "}
             <Link href="/login/">
               <a class="underline text-blue-400">here</a>
             </Link>
-            . We intend to update the leaderboard every three months.
+            . Our next ranking will be coming out on February 7th, 2023!
           </h2>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md">
             Disclaimer: Even though we want our ranking to be as comprehensive

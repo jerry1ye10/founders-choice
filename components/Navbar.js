@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Countdown from "react-countdown";
@@ -38,6 +38,10 @@ export default function Navbar() {
     setIsMobile(window.innerWidth < 768);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
+    const current = new Date();
+    const deadline = new Date("2023-02-07 UTC-4");
+    const difference = dateDiffInDays(current, deadline);
+    setCountDown(difference);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -45,6 +49,17 @@ export default function Navbar() {
 
   return (
     <>
+      {isIndex && (
+        <div class="bg-gray-300">
+          <div class="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8 text-center">
+            <p class="font-medium text-2xl">
+              {" "}
+              We're releasing our second ranking list soon. Get your rankings in
+              now! Time remaining: {countdown} days
+            </p>
+          </div>
+        </div>
+      )}
       <nav className="flex top-0 inline-block w-screen p-6">
         {isIndex || (
           <a href="/" className="raleway sm:text-4xl text-xl font-bold mr-6">

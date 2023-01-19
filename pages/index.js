@@ -1,5 +1,4 @@
 import Image from "next/image";
-import logo from "../public/logo.svg";
 import { useRef, useState, useEffect } from "react";
 import CompletedComparisons from "./ranking";
 
