@@ -47,44 +47,51 @@ export default function CompletedComparisons({ data = [] }) {
           </h2>
           <Ranking data={data} />
           <h1
-            className={`montserrat text-5xl font-semibold sm:my-8 sm:mb-0 mb-4 text-center mt-12 lg:mt-16`}
+            className={`montserrat text-5xl font-semibold sm:my-8 sm:mb-0 text-center mt-12 lg:mt-16 `}
           >
             Thank you to our supporters
           </h1>
 
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center mt-8"
+            style={{ columnGap: "80px" }}
+          >
             <Image
-              height="200"
+              width="500px"
+              height="75px"
               src={SignalFire}
               layout="fixed"
-              alt="BBG Ventures"
+              alt="SignalFire"
               objectFit="contain"
             />
             <Image
               src={Crunchbase}
-              height="200"
+              width="500px"
+              height="150px"
               layout="fixed"
               alt="Crunchbase"
               objectFit="contain"
             />
           </div>
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center"
+            style={{ columnGap: "15px" }}
+          >
             <Image
               src={Precursor}
               layout="fixed"
-              width="500"
-              height="130"
+              width="500px"
+              height="150px"
               alt="Precursor Ventures"
               objectFit="contain"
             />
-            <div className="flex items-center justify-center">
-              <Image
-                src={Beta}
-                height="130"
-                alt="Bloomberg Beta"
-                objectFit="contain"
-              />
-            </div>
+            <Image
+              src={Beta}
+              width="500px"
+              height="150px"
+              alt="Bloomberg Beta"
+              objectFit="contain"
+            />
           </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
             We only include firms where we received 25 or more comparisons to
