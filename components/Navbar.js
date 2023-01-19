@@ -39,7 +39,7 @@ export default function Navbar() {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     const current = new Date();
-    const deadline = new Date("2023-02-07 UTC-4");
+    const deadline = new Date("2023-02-07T00:00:00Z");
     const difference = dateDiffInDays(current, deadline);
     setCountDown(difference);
     return () => window.removeEventListener("resize", handleResize);
