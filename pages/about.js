@@ -134,8 +134,7 @@ export default function FAQ() {
         <Link href={"/"}>
           <a class="underline text-blue-400">here</a>
         </Link>
-        {""}. For the future, we’ll be updating our rankings every three months.
-        Our next leaderboard will release in January 2023.
+        {""}. Our next leaderboard will release in February 2023.
       </p>
       <h3 className={STYLED_SUBHEADER}>
         How else can I do diligence on my future investors?
