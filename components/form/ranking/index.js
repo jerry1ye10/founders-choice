@@ -54,22 +54,22 @@ const RANKING_COLUMNS = [
     width: 35,
     maxWidth: 40,
   },
-  {
-    Header: () => (
-      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden">
-        Unique Founders
-      </div>
-    ),
-    accessor: "uniqueCount",
-    Cell: ({ value }) => (
-      <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden w-8 h-8 my-1">
-        <div className="flex items-center">{Math.round(value)} </div>
-      </div>
-    ),
-    minWidth: 0,
-    width: 35,
-    maxWidth: 40,
-  },
+  // {
+  //   Header: () => (
+  //     <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden">
+  //       Unique Founders
+  //     </div>
+  //   ),
+  //   accessor: "uniqueCount",
+  //   Cell: ({ value }) => (
+  //     <div className="sm:text-2xl text-xl -ml-12 sm:ml-0 lg:block hidden w-8 h-8 my-1">
+  //       <div className="flex items-center">{Math.round(value)} </div>
+  //     </div>
+  //   ),
+  //   minWidth: 0,
+  //   width: 35,
+  //   maxWidth: 40,
+  // },
   {
     id: "display",
     Header: "Name",
