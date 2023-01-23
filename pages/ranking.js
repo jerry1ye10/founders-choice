@@ -100,7 +100,7 @@ export default function CompletedComparisons({ data = [] }) {
             <Link href="/login/">
               <a class="underline text-blue-400">here</a>
             </Link>
-            . Our next ranking will be coming out on February 7th, 2023!
+            . Our next ranking will be coming out in early February!
           </h2>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md">
             Disclaimer: Even though we want our ranking to be as comprehensive
