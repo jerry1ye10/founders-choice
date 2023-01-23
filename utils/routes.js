@@ -19,3 +19,5 @@ export const GET_COMPARISONS = `/api/get-comparisons`;
 export const SUBMIT_COMPARISONS = `/api/submit`;
 export const GET_FOUNDER_COUNT = `/api/founderCount`;
 export const SUBMIT_REFERRALS = `/api/submitReferrals`;
+export const GET_COMPANY_BY_SLUG = `/api/crunchbase/company-by-slug`;
+export const GET_INVESTOR_BY_SLUG = `/api/crunchbase/investor-by-slug`;

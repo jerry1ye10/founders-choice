@@ -18,7 +18,6 @@ export const getServerSideProps = withIronSessionSsr(
         },
       };
     }
-
     try {
       // Generate and save authToken in session
       const { access_token: authToken = null } = await ky
@@ -26,6 +25,7 @@ export const getServerSideProps = withIronSessionSsr(
           json: { code },
         })
         .json();
+
       req.session.authToken = authToken;
       await req.session.save();
 

@@ -5,7 +5,7 @@ import { withIronSessionSsr } from "iron-session/next";
 import ky from "ky-universal";
 import AsyncSelect from "react-select/async";
 import Loader from "../../components/Loader";
-
+import CompanyModal from "../../components/CompanyModal";
 /**
   Do redirects here
   They either...
@@ -132,15 +132,9 @@ export function VerificationInfo({ profile }) {
   );
 }
 
-export default function SelectCompany({
-  companyOptions,
-  profile,
-}) {
-  const [selectedCompany, setSelectedCompany] = useState(
-    companyOptions?.[0]
-  );
+export default function SelectCompany({ companyOptions, profile }) {
+  const [selectedCompany, setSelectedCompany] = useState(companyOptions?.[0]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
   const router = useRouter();
 
   const handleSubmit = async () => {
@@ -194,10 +188,21 @@ export default function SelectCompany({
         >
           Next
         </button>{" "}
-        <h3 className="raleway text-xl font-light mt-8 font-bold w-full xs-w-1/2">
-          If the startup you founded is missing or incorrect, please reach out
-          to Jerry Ye at jerry1ye10@gmail.com
+        <h3 className="raleway text-xl font-light mt-8 w-full md:px-48 sm:px-24 xs-w-1/2">
+          If the startup you founded is missing or incorrect, please manually
+          add it{" "}
+          <label
+            htmlFor="my-modal"
+            className="cursor-pointer underline hover:font-bold"
+          >
+            here
+          </label>
         </h3>
+        <CompanyModal
+          setSelectedCompany={setSelectedCompany}
+          handleSubmit={handleSubmit}
+          oldCompany={companyOptions?.[0]}
+        />
       </div>
     );
   }

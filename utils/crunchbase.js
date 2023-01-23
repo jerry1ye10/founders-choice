@@ -7,8 +7,10 @@ const COMPANIES_ENDPOINT = `https://api.crunchbase.com/api/v4/searches/organizat
 const INVESTORS_ENDPOINT = (companyID) =>
   `https://api.crunchbase.com/api/v4/entities/organizations/${companyID}?card_ids=investors&user_key=${API_KEY}`;
 const INVESTOR_BY_SLUG_ENDPOINT = (investorSlug) =>
-`https://api.crunchbase.com/api/v4/entities/organizations/${investorSlug}?field_ids=properties,investor_type,image_url&user_key=${API_KEY}`;
+  `https://api.crunchbase.com/api/v4/entities/organizations/${investorSlug}?field_ids=properties,investor_type,image_url&user_key=${API_KEY}`;
 
+const COMPANY_NAME_BY_SLUG_ENDPOINT = (companySlug) =>
+  `https://api.crunchbase.com/api/v4/entities/organizations/${companySlug}?user_key=${API_KEY}`;
 
 // TODO: Update with what kinds of investors we allow in the rankings
 const ALLOWED_INVESTOR_TYPES = [`venture_capital`];
@@ -75,10 +77,14 @@ export async function getInvestors(companyId) {
       })
     ).json();
     let investors = companiesInvestors?.cards?.investors;
-    const overriddenInvestorsSnapshot = await db.collection("AdditionalInvestors").doc(companyId).get()
+    const overriddenInvestorsSnapshot = await db
+      .collection("AdditionalInvestors")
+      .doc(companyId)
+      .get();
     if (overriddenInvestorsSnapshot?.exists) {
       if (overriddenInvestorsSnapshot.data()?.override) investors = [];
-      const additionalInvestorsSlugs = overriddenInvestorsSnapshot.data()?.investors;
+      const additionalInvestorsSlugs = overriddenInvestorsSnapshot.data()
+        ?.investors;
       for (const investorSlug of additionalInvestorsSlugs) {
         const investorData = await getInvestorBySlug(investorSlug);
         investors.push(investorData);
@@ -86,7 +92,7 @@ export async function getInvestors(companyId) {
     }
     return investors;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return [];
   }
 }
@@ -100,7 +106,21 @@ export async function getInvestorBySlug(slug) {
     ).json();
     return companiesInvestors?.properties;
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    return {};
+  }
+}
+
+export async function getCompanyBySlug(slug) {
+  try {
+    const company = await (
+      await ky.get(COMPANY_NAME_BY_SLUG_ENDPOINT(slug), {
+        headers: { Accept: "application/json" },
+      })
+    ).json();
+    return company?.properties;
+  } catch (error) {
+    console.error(error);
     return {};
   }
 }
@@ -113,7 +133,7 @@ export async function createInvestor(investor) {
       elo: 1000,
       name: investor.name,
       numComparisons: 0,
-      image: investor?.image_url
+      image: investor?.image_url,
     };
     investorRef.set(investorData);
   }
