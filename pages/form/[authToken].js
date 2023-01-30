@@ -93,7 +93,7 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
 
   const submitInvestors = async () => {
     await ky.post(`${process.env.NEXT_PUBLIC_BASE_URL}${CONFIRM_INVESTORS}`);
-    setInvestors(investors);
+    setInvestors(currentInvestors);
     router.push(COMPARISONS);
   };
 
