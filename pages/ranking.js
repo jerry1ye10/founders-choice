@@ -151,7 +151,7 @@ export default function CompletedComparisons({ data = [] }) {
           </button>
         </div>
       </div>
-      <h3 class="raleway text-xl font-light mt-8 font-bold w-full xs-w-1/2">
+      <h3 class="raleway text-xl font-light mt-8 w-full xs-w-1/2">
         If you're a venture-backed founder and would like to contribute to our
         rankings, please do so{" "}
         <Link href={LOGIN}>

@@ -20,6 +20,7 @@ export default withIronSessionApiRoute(
       // Transactions require all reads be done before writes
       const validateRef = db.collection("MTurk").doc(profileId);
       const validateDoc = await t.get(validateRef);
+      console.log(validateDoc.data());
       const companyCode = validateDoc.data()?.crunchbaseSlug;
       const founderHash = crypto
         .createHash("sha256")
@@ -56,6 +57,7 @@ export default withIronSessionApiRoute(
           id: i?.identifier?.uuid,
           slug: i?.identifier?.permalink,
         }));
+        console.log(validateDoc.data().additionalInvestors);
         if (validateDoc.data().additionalInvestors) {
           investorsObjs = investorsObjs.concat(
             validateDoc.data().additionalInvestors

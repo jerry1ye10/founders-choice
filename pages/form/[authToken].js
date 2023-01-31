@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import ky from "ky-universal";
 import { withIronSessionSsr } from "iron-session/next";
+
+import InvestorModal from "../../components/InvestorModal";
 
 import {
   GET_INVESTORS,
   COMPARISONS,
   AUTH_EMAIL,
   CONFIRM_INVESTORS,
+  ADD_ADDITIONAL_INVESTORS,
 } from "../../utils/routes";
 import { useAppContext } from "../../context/state";
 
@@ -84,11 +88,25 @@ export const getServerSideProps = withIronSessionSsr(
 
 export default function ConfirmInvestors({ investors = [], name, company }) {
   const router = useRouter();
+
+  const [additionalInvestors, setAdditionalInvestors] = useState([]);
   const { setInvestors } = useAppContext();
 
   const submitInvestors = async () => {
+    if (additionalInvestors.length > 0) {
+      await ky.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${ADD_ADDITIONAL_INVESTORS}`,
+        {
+          json: {
+            additionalInvestors: additionalInvestors.map((data) => data.slug),
+          },
+        }
+      );
+    }
+
     await ky.post(`${process.env.NEXT_PUBLIC_BASE_URL}${CONFIRM_INVESTORS}`);
-    setInvestors(investors);
+
+    setInvestors(setInvestors);
     router.push(COMPARISONS);
   };
 
@@ -102,7 +120,16 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
       </h1>
       <div className="bg-gray-300 h-96 w-2/3 overflow-scroll rounded-lg">
         {investors
-          .sort((i) => i?.name || "")
+          .concat(additionalInvestors)
+          .sort(function (a, b) {
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          })
           .map((i) => (
             <div class="flex items-center p-4">
               <div className="w-12 sm:w-16 h-12 sm:h-16 bg-white rounded-lg overflow-hidden flex items-center">
@@ -114,9 +141,15 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
             </div>
           ))}
       </div>
-      <h3 className="raleway text-lg sm:text-xl">
-        If there are any investors missing, please email us at
-        jerry1ye10@gmail.com <b>before</b> you confirm.
+
+      <h3 className="raleway text-lg sm:text-xl font-light w-full mt-4">
+        If there are any investors missing, please manually add it{" "}
+        <label
+          htmlFor="my-modal"
+          className="cursor-pointer underline hover:font-bold"
+        >
+          here
+        </label>
       </h3>
       <button
         onClick={submitInvestors}
@@ -124,6 +157,12 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
       >
         Confirm Investors
       </button>
+
+      <InvestorModal
+        investors={investors}
+        additionalInvestors={additionalInvestors}
+        setAdditionalInvestors={setAdditionalInvestors}
+      />
     </div>
   );
 }

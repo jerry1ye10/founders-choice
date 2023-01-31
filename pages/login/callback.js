@@ -18,7 +18,6 @@ export const getServerSideProps = withIronSessionSsr(
         },
       };
     }
-
     try {
       // Generate and save authToken in session
       const { access_token: authToken = null } = await ky
@@ -26,6 +25,7 @@ export const getServerSideProps = withIronSessionSsr(
           json: { code },
         })
         .json();
+
       req.session.authToken = authToken;
       await req.session.save();
 
@@ -33,8 +33,8 @@ export const getServerSideProps = withIronSessionSsr(
       const emailRes = await getEmail(authToken);
       const profileRes = await getProfile(authToken);
       req.session.profile = {
-        first: profileRes.localizedFirstName,
-        last: profileRes.localizedLastName,
+        first: "Roy" || profileRes.localizedFirstName,
+        last: "Bahat" || profileRes.localizedLastName,
         id: profileRes.id,
         image:
           profileRes?.profilePicture?.["displayImage~"]?.elements?.[3]
