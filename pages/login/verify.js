@@ -22,6 +22,7 @@ import {
   FORM,
   COMPLETED_COMPARISONS,
   COMPARISONS,
+  ADD_ADDITIONAL_FOUNDERS,
 } from "../../utils/routes";
 import "tailwindcss/tailwind.css";
 
@@ -137,6 +138,21 @@ export default function SelectCompany({ companyOptions, profile }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const router = useRouter();
 
+  const handleNewCompanySubmit = async () => {
+    await ky.post(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/${ADD_ADDITIONAL_FOUNDERS}`,
+      {
+        json: {
+          additionalFounders: {
+            ...profile,
+            slug: selectedCompany.value,
+            companyName: selectedCompany.label,
+          },
+        },
+      }
+    );
+    await handleSubmit();
+  };
   const handleSubmit = async () => {
     await ky.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${VERIFY_USER}`, {
       json: {
@@ -200,7 +216,7 @@ export default function SelectCompany({ companyOptions, profile }) {
         </h3>
         <CompanyModal
           setSelectedCompany={setSelectedCompany}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleNewCompanySubmit}
           oldCompany={companyOptions?.[0]}
         />
       </div>

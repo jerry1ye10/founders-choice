@@ -10,6 +10,7 @@ import {
   COMPARISONS,
   AUTH_EMAIL,
   CONFIRM_INVESTORS,
+  ADD_ADDITIONAL_INVESTORS,
 } from "../../utils/routes";
 import { useAppContext } from "../../context/state";
 
@@ -88,12 +89,24 @@ export const getServerSideProps = withIronSessionSsr(
 export default function ConfirmInvestors({ investors = [], name, company }) {
   const router = useRouter();
 
-  const [currentInvestors, setCurrentInvestors] = useState(investors);
+  const [additionalInvestors, setAdditionalInvestors] = useState([]);
   const { setInvestors } = useAppContext();
 
   const submitInvestors = async () => {
+    if (additionalInvestors.length > 0) {
+      await ky.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${ADD_ADDITIONAL_INVESTORS}`,
+        {
+          json: {
+            additionalInvestors: additionalInvestors.map((data) => data.name),
+          },
+        }
+      );
+    }
+
     await ky.post(`${process.env.NEXT_PUBLIC_BASE_URL}${CONFIRM_INVESTORS}`);
-    setInvestors(currentInvestors);
+
+    setInvestors(setInvestors);
     router.push(COMPARISONS);
   };
 
@@ -106,7 +119,8 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
         in {company || "your company"}.
       </h1>
       <div className="bg-gray-300 h-96 w-2/3 overflow-scroll rounded-lg">
-        {currentInvestors
+        {investors
+          .concat(additionalInvestors)
           .sort(function (a, b) {
             if (a.name < b.name) {
               return -1;
@@ -145,8 +159,9 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
       </button>
 
       <InvestorModal
-        currentInvestors={currentInvestors}
-        setCurrentInvestors={setCurrentInvestors}
+        investors={investors}
+        additionalInvestors={additionalInvestors}
+        setAdditionalInvestors={setAdditionalInvestors}
       />
     </div>
   );

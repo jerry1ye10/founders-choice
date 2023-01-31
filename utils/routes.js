@@ -21,3 +21,5 @@ export const GET_FOUNDER_COUNT = `/api/founderCount`;
 export const SUBMIT_REFERRALS = `/api/submitReferrals`;
 export const GET_COMPANY_BY_SLUG = `/api/crunchbase/company-by-slug`;
 export const GET_INVESTOR_BY_SLUG = `/api/crunchbase/investor-by-slug`;
+export const ADD_ADDITIONAL_FOUNDERS = `/api/add-additional-founders`;
+export const ADD_ADDITIONAL_INVESTORS = `/api/add-additional-investors`;

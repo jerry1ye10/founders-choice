@@ -133,7 +133,7 @@ export async function createInvestor(investor) {
       elo: 1000,
       name: investor.name,
       numComparisons: 0,
-      image: investor?.image_url,
+      image: investor?.image_url ?? "",
     };
     investorRef.set(investorData);
   }

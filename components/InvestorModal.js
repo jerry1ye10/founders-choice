@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { GET_COMPANY_BY_SLUG, GET_INVESTOR_BY_SLUG } from "../utils/routes";
 import ky from "ky-universal";
 
-const Modal = ({ currentInvestors, setCurrentInvestors }) => {
+const Modal = ({ investors, additionalInvestors, setAdditionalInvestors }) => {
   const [slug, setSlug] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,13 +12,13 @@ const Modal = ({ currentInvestors, setCurrentInvestors }) => {
   const [error, setError] = useState([false, ""]);
   const handleSubmit = () => {
     closeModal();
-    setCurrentInvestors([...currentInvestors, investorData]);
+    setAdditionalInvestors([...additionalInvestors, investorData]);
   };
   const handleVerifySlug = async () => {
     setIsLoading(true);
-    const investorAlreadyExists = currentInvestors.find(
-      (investor) => investor.slug === slug
-    );
+    const investorAlreadyExists = investors
+      .concat(additionalInvestors)
+      .find((investor) => investor.slug === slug);
     if (investorAlreadyExists) {
       setError([true, "Investor already exists"]);
       setIsLoading(false);
