@@ -98,7 +98,7 @@ export default function ConfirmInvestors({ investors = [], name, company }) {
         `${process.env.NEXT_PUBLIC_BASE_URL}${ADD_ADDITIONAL_INVESTORS}`,
         {
           json: {
-            additionalInvestors: additionalInvestors.map((data) => data.name),
+            additionalInvestors: additionalInvestors.map((data) => data.slug),
           },
         }
       );

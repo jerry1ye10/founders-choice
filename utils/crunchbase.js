@@ -87,6 +87,7 @@ export async function getInvestors(companyId) {
         ?.investors;
       for (const investorSlug of additionalInvestorsSlugs) {
         const investorData = await getInvestorBySlug(investorSlug);
+        console.log(investorData);
         investors.push(investorData);
       }
     }

@@ -24,17 +24,21 @@ const Modal = ({ investors, additionalInvestors, setAdditionalInvestors }) => {
       setIsLoading(false);
       return;
     }
-    const data = await ky
-      .post(`${process.env.NEXT_PUBLIC_BASE_URL}${GET_INVESTOR_BY_SLUG}`, {
-        json: { slug },
-      })
-      .json();
-    if (data) {
-      setInvestorData(data);
-      setVerified(true);
-      setError([false, ""]);
-    } else {
-      setError([true, "This slug does not exist"]);
+    try {
+      const data = await ky
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}${GET_INVESTOR_BY_SLUG}`, {
+          json: { slug },
+        })
+        .json();
+      if (data) {
+        setInvestorData(data);
+        setVerified(true);
+        setError([false, ""]);
+      } else {
+        setError([true, "This slug does not exist"]);
+      }
+    } catch (err) {
+      setError([true, "This is an invalid investor"]);
     }
     setIsLoading(false);
   };
