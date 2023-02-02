@@ -9,6 +9,8 @@ import Beta from "../public/logos/beta.png";
 import SignalFire from "../public/logos/signalfire.png";
 import Crunchbase from "../public/logos/crunchbase.png";
 import Precursor from "../public/logos/precursor.png";
+import Canvas from "../public/logos/canvas.png";
+
 const SHOW_RANKING = true;
 const STYLED_HEADER = `
   montserrat text-5xl font-semibold sm:my-8 mb-2 sm:mb-0 mb-4
@@ -51,47 +53,60 @@ export default function CompletedComparisons({ data = [] }) {
           >
             Thank you to our supporters
           </h1>
-
-          <div
-            className="flex items-center justify-center mt-8"
-            style={{ columnGap: "80px" }}
-          >
-            <Image
-              width="500px"
-              height="75px"
-              src={SignalFire}
-              layout="fixed"
-              alt="SignalFire"
-              objectFit="contain"
-            />
-            <Image
-              src={Crunchbase}
-              width="500px"
-              height="150px"
-              layout="fixed"
-              alt="Crunchbase"
-              objectFit="contain"
-            />
+          <div className="px-24 flex items-center justify-center mt-2">
+            <a href="https://canvasapp.com/?utm_source=founderschoice&utm_medium=sponsorship">
+              <Image
+                src={Canvas}
+                width="500px"
+                height="160px"
+                layout="fixed"
+                alt="Crunchbase"
+                objectFit="contain"
+              />
+            </a>
           </div>
-          <div
-            className="flex items-center justify-center"
-            style={{ columnGap: "15px" }}
-          >
-            <Image
-              src={Precursor}
-              layout="fixed"
-              width="500px"
-              height="150px"
-              alt="Precursor Ventures"
-              objectFit="contain"
-            />
-            <Image
-              src={Beta}
-              width="500px"
-              height="150px"
-              alt="Bloomberg Beta"
-              objectFit="contain"
-            />
+          <div className="flex items-center justify-center mt-2">
+            <a href="https://signalfire.com/">
+              <Image
+                width="500px"
+                height="75px"
+                src={SignalFire}
+                layout="fixed"
+                alt="SignalFire"
+                objectFit="contain"
+              />
+            </a>
+            <a href="https://www.crunchbase.com/">
+              <Image
+                src={Crunchbase}
+                width="500px"
+                height="150px"
+                layout="fixed"
+                alt="Crunchbase"
+                objectFit="contain"
+              />
+            </a>
+          </div>
+          <div className="flex items-center justify-center">
+            <a href="https://precursorvc.com/">
+              <Image
+                src={Precursor}
+                layout="fixed"
+                width="500px"
+                height="150px"
+                alt="Precursor Ventures"
+                objectFit="contain"
+              />
+            </a>
+            <a href="https://www.bloombergbeta.com/">
+              <Image
+                src={Beta}
+                width="500px"
+                height="150px"
+                alt="Bloomberg Beta"
+                objectFit="contain"
+              />
+            </a>
           </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
             We only include firms where we received 25 or more comparisons to

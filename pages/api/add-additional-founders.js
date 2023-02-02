@@ -9,7 +9,6 @@ export default withIronSessionApiRoute(
       return res.status(400).json({});
     } else {
       const founderData = req.body.additionalFounders;
-      console.log(founderData);
       try {
         await db.runTransaction(async (t) => {
           const additionalFoundersRef = db
