@@ -53,7 +53,7 @@ export default function CompletedComparisons({ data = [] }) {
           >
             Thank you to our supporters
           </h1>
-          <div className="px-24 flex items-center justify-center mt-2">
+          <div className="px-24 flex items-center justify-center mt-10">
             <a href="https://canvasapp.com/?utm_source=founderschoice&utm_medium=sponsorship">
               <Image
                 src={Canvas}
