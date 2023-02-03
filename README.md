@@ -26,5 +26,6 @@ We take founder's data very seriously. Although we authenticate all founders thr
 * BBG Ventures
 * Bloomberg Beta
 * Precursor Ventures
+* Canvas App
 
 Although we have venture capital firms as sponsors for this project, they do not have access to any of the data nor are they able to contribute to any of the rankings. Our sponsors are only interested in supporting this ranking project so they can better serve founders.
