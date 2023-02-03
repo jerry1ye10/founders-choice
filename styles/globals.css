@@ -3,8 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#__next {
+    overflow-x: hidden;
+}
+
 .body {
-    letter-spacing: -0.1em;
+     letter-spacing: -0.1em;
 }
 
 .raleway {
