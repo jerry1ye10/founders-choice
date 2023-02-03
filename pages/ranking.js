@@ -54,59 +54,69 @@ export default function CompletedComparisons({ data = [] }) {
             Thank you to our supporters
           </h1>
           <div className="px-24 flex items-center justify-center mt-10">
-            <a href="https://canvasapp.com/?utm_source=founderschoice&utm_medium=sponsorship">
-              <Image
-                src={Canvas}
-                width="500px"
-                height="160px"
-                layout="fixed"
-                alt="Crunchbase"
-                objectFit="contain"
-              />
-            </a>
-          </div>
-          <div className="flex items-center justify-center mt-2">
-            <a href="https://signalfire.com/">
-              <Image
-                width="500px"
-                height="75px"
-                src={SignalFire}
-                layout="fixed"
-                alt="SignalFire"
-                objectFit="contain"
-              />
-            </a>
-            <a href="https://www.crunchbase.com/">
-              <Image
-                src={Crunchbase}
-                width="500px"
-                height="150px"
-                layout="fixed"
-                alt="Crunchbase"
-                objectFit="contain"
-              />
-            </a>
+            <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open(
+                  "https://canvasapp.com/?utm_source=founderschoice&utm_medium=sponsorship",
+                  "_self"
+                )
+              }
+              src={Canvas}
+              width="500px"
+              height="150px"
+              layout="fixed"
+              alt="Crunchbase"
+              objectFit="contain"
+            />
           </div>
           <div className="flex items-center justify-center">
-            <a href="https://precursorvc.com/">
-              <Image
-                src={Precursor}
-                layout="fixed"
-                width="500px"
-                height="150px"
-                alt="Precursor Ventures"
-                objectFit="contain"
-              />
-            </a>
-            <a href="https://www.bloombergbeta.com/">
-              <Image
-                src={Beta}
-                width="500px"
-                height="150px"
-                alt="Bloomberg Beta"
-                objectFit="contain"
-              />
-            </a>
+            <Image
+              className="cursor-pointer"
+              onClick={() => window.open("https://signalfire.com/")}
+              width="500px"
+              height="75px"
+              src={SignalFire}
+              layout="fixed"
+              alt="SignalFire"
+              objectFit="contain"
+            />
+            <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open("https://www.crunchbase.com/", "_self")
+              }
+              src={Crunchbase}
+              width="500px"
+              height="150px"
+              layout="fixed"
+              alt="Crunchbase"
+              objectFit="contain"
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              className="cursor-pointer"
+              onClick={() => window.open("https://precursorvc.com/", "_self")}
+              src={Precursor}
+              layout="fixed"
+              width="500px"
+              height="150px"
+              alt="Precursor Ventures"
+              objectFit="contain"
+            />
+
+            <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open("https://www.bloombergbeta.com/", "_self")
+              }
+              src={Beta}
+              width="500px"
+              height="150px"
+              alt="Bloomberg Beta"
+              objectFit="contain"
+            />
           </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
             We only include firms where we received 25 or more comparisons to
