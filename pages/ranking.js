@@ -9,6 +9,8 @@ import Beta from "../public/logos/beta.png";
 import SignalFire from "../public/logos/signalfire.png";
 import Crunchbase from "../public/logos/crunchbase.png";
 import Precursor from "../public/logos/precursor.png";
+import Canvas from "../public/logos/canvas.png";
+
 const SHOW_RANKING = true;
 const STYLED_HEADER = `
   montserrat text-5xl font-semibold sm:my-8 mb-2 sm:mb-0 mb-4
@@ -51,12 +53,27 @@ export default function CompletedComparisons({ data = [] }) {
           >
             Thank you to our supporters
           </h1>
-
-          <div
-            className="flex items-center justify-center mt-8"
-            style={{ columnGap: "80px" }}
-          >
+          <div className="px-24 flex items-center justify-center mt-10">
             <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open(
+                  "https://canvasapp.com/?utm_source=founderschoice&utm_medium=sponsorship",
+                  "_self"
+                )
+              }
+              src={Canvas}
+              width="500px"
+              height="150px"
+              layout="fixed"
+              alt="Crunchbase"
+              objectFit="contain"
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              className="cursor-pointer"
+              onClick={() => window.open("https://signalfire.com/")}
               width="500px"
               height="75px"
               src={SignalFire}
@@ -65,6 +82,10 @@ export default function CompletedComparisons({ data = [] }) {
               objectFit="contain"
             />
             <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open("https://www.crunchbase.com/", "_self")
+              }
               src={Crunchbase}
               width="500px"
               height="150px"
@@ -73,11 +94,10 @@ export default function CompletedComparisons({ data = [] }) {
               objectFit="contain"
             />
           </div>
-          <div
-            className="flex items-center justify-center"
-            style={{ columnGap: "15px" }}
-          >
+          <div className="flex items-center justify-center">
             <Image
+              className="cursor-pointer"
+              onClick={() => window.open("https://precursorvc.com/", "_self")}
               src={Precursor}
               layout="fixed"
               width="500px"
@@ -85,7 +105,12 @@ export default function CompletedComparisons({ data = [] }) {
               alt="Precursor Ventures"
               objectFit="contain"
             />
+
             <Image
+              className="cursor-pointer"
+              onClick={() =>
+                window.open("https://www.bloombergbeta.com/", "_self")
+              }
               src={Beta}
               width="500px"
               height="150px"
