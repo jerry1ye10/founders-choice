@@ -80,7 +80,7 @@ const Modal = ({ investors, additionalInvestors, setAdditionalInvestors }) => {
               <p className=" ml-4 py-4 font-semibold">{investorData.name}</p>
             </div>
           ) : (
-            <p className="py-4 flex justify-center text-sm items-center">
+            <p className="py-4 flex max-w-full justify-center text-sm items-center break-words flex-wrap">
               <div>https://www.crunchbase.com/organization/</div>
               <input
                 className="pl-1 border rounded-sm"

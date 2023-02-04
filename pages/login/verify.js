@@ -181,9 +181,20 @@ export default function SelectCompany({ companyOptions, profile }) {
       <div className="flex flex-col items-center justify-center text-center">
         <h1 className="raleway text-2xl font-extralight mt-8 font-bold w-full xs-w-1/2 px-5">
           We're missing a record of a venture-backed startup that you founded.
-          If this is a mistake, please reach out to Jerry Ye at
-          jerry1ye10@gmail.com
         </h1>
+        <h1 className="raleway text-2xl font-extralight mt-8 font-bold w-full xs-w-1/2 px-5">
+          If you think this is a mistake, please manually enter your startup{" "}
+          <label
+            htmlFor="my-modal"
+            className="cursor-pointer underline hover:font-bold"
+          >
+            here
+          </label>
+        </h1>
+        <CompanyModal
+          setSelectedCompany={setSelectedCompany}
+          handleSubmit={handleNewCompanySubmit}
+        />
       </div>
     );
   } else {

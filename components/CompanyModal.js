@@ -30,7 +30,7 @@ const Modal = ({ setSelectedCompany, handleSubmit, oldCompany }) => {
   };
 
   const closeModal = () => {
-    setSelectedCompany(oldCompany);
+    setSelectedCompany(oldCompany ?? "");
     setCompanyName("");
     setVerified(false);
     setError([false, ""]);
@@ -60,7 +60,7 @@ const Modal = ({ setSelectedCompany, handleSubmit, oldCompany }) => {
           {verified ? (
             <p className="py-4 font-semibold">{companyName}</p>
           ) : (
-            <p className="py-4 flex justify-center text-sm items-center">
+            <p className="py-4 flex max-w-full justify-center text-sm items-center break-words flex-wrap">
               <div>https://www.crunchbase.com/organization/</div>
               <input
                 className="pl-1 border rounded-sm"
