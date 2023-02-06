@@ -55,7 +55,7 @@ export default function Navbar() {
             <p class="font-medium text-2xl">
               {" "}
               We're releasing our second ranking list soon. Get your rankings in
-              now! Time remaining: {countdown} days
+              now! Time remaining: 2 days
             </p>
           </div>
         </div>
