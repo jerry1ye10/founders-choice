@@ -119,7 +119,7 @@ export default function CompletedComparisons({ data = [] }) {
             />
           </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
-            We only include firms where we received 25 or more comparisons to
+            We only include firms where we received 100 or more comparisons to
             other firms. If you're a founder and you want to help increase the
             amount of firms on our list, please contribute to our rankings{" "}
             <Link href="/login/">

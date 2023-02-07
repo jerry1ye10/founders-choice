@@ -15,7 +15,7 @@ export async function getStaticProps() {
         elo,
       };
     })
-    .filter((e) => e.numComparisons > 25)
+    .filter((e) => e.numComparisons > 100)
     .sort((a, b) => parseInt(b.elo) - parseInt(a.elo))
     // .filter((e) => e.image !== "")
     .map((e, i) => ({ ...e, index: i + 1 }));
