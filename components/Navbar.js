@@ -54,8 +54,8 @@ export default function Navbar() {
           <div class="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8 text-center">
             <p class="font-medium text-2xl">
               {" "}
-              We're releasing our second ranking list soon. Get your rankings in
-              now! Time remaining: 2 days
+              We're releasing our second ranking list tomorrow. Get your rankings in
+              now!
             </p>
           </div>
         </div>
