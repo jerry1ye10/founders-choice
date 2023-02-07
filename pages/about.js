@@ -116,25 +116,41 @@ export default function FAQ() {
         How much data goes into creating these rankings?
       </h3>
       <p className={STYLED_PARA}>
-        Our first batch of rankings uses data from over 375 venture-backed
-        founders. We only rank VC firms on whom we have enough data. We only
-        include VC firms with more than 25 comparisons from founders.
+        Our second release uses data from 1000 venture-backed founders. We only
+        rank VC firms on whom we believe we have statistically significant data.
+        Specifically we’ve chosen to include VC firms with more than 100
+        comparisons from founders.
       </p>
       <p className={STYLED_PARA}>
-        We recognize that our first leaderboards may be biased by the sample of
-        which VC’s portfolio companies submitted rankings, but we believe that
-        over time the leaderboards will reflect a broader pool of rankings as
-        more founders submit.
+        We recognize that our initial leaderboards may be biased by the sample
+        of which VC’s portfolio companies submitted rankings, but we believe
+        that over time the leaderboards will reflect a broader pool of rankings
+        as more founders submit.
       </p>
+      <h3 className={STYLED_SUBHEADER}>
+        Why did you change the comparison cutoff from 25 comparisons to 100 for
+        the second release?
+      </h3>
+      <p className={STYLED_PARA}>
+        For us, the biggest priority is to choose a comparison cutoff where we
+        feel the elo of each firm on the list is statistically significant. We
+        originally chose 25 last time because that was the expected number of
+        games where an elo rating stabilizes in chess. As we’ve gotten more
+        data, we've realized that that number is closer to 100. Moving forward,
+        with each release, we'll keep doing our best to ensure that our list
+        builds on top of statistically significant data.
+      </p>
+
       <h3 className={STYLED_SUBHEADER}>
         How often will you update the rankings?
       </h3>
       <p className={STYLED_PARA}>
-        We’ve released our first ranking list! Check it out{" "}
+        We're planning on updating the rankings roughly every 6 months! Check
+        out our latest release{" "}
         <Link href={"/"}>
           <a class="underline text-blue-400">here</a>
         </Link>
-        {""}. Our next leaderboard will release in February 2023.
+        {""}.
       </p>
       <h3 className={STYLED_SUBHEADER}>
         How else can I do diligence on my future investors?
