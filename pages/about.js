@@ -116,7 +116,7 @@ export default function FAQ() {
         How much data goes into creating these rankings?
       </h3>
       <p className={STYLED_PARA}>
-        Our second release uses data from 1071 venture-backed founders. We only
+        Our second release uses data from 1077 venture-backed founders. We only
         rank VC firms on whom we believe we have statistically significant data.
         Specifically we’ve chosen to include VC firms with more than 100
         comparisons from founders.
