@@ -54,7 +54,8 @@ export default function Navbar() {
           <div class="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8 text-center">
             <p class="font-medium text-2xl">
               {" "}
-              Submissions have closed for the second release of Founder's Choice. Our release is coming soon! 
+              Our second ranking list is out! We're proud to feature feedback
+              from 1077 venture-backed founders.
             </p>
           </div>
         </div>

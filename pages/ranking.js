@@ -119,14 +119,16 @@ export default function CompletedComparisons({ data = [] }) {
             />
           </div>
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-20 mt-8 text-md">
-            We only include firms where we received 25 or more comparisons to
-            other firms. If you're a founder and you want to help increase the
-            amount of firms on our list, please contribute to our rankings{" "}
-            <Link href="/login/">
+            We only include firms where we received 100 or more comparisons to
+            other firms. We changed this from our first release where we had
+            included firms with over 25 comparisons. To learn more about our
+            change and the rest of our methodology, please view our FAQ{" "}
+            <Link href="/about/">
               <a class="underline text-blue-400">here</a>
             </Link>
-            . Our next ranking will be coming out in early February!
+            .
           </h2>
+
           <h2 className="raleway text-left sm:text-2xl font-extralight mb-4 sm:mt-5 text-md">
             Disclaimer: Even though we want our ranking to be as comprehensive
             as possible, we recommend doing your own diligence on VC firms.
