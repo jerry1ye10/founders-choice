@@ -55,7 +55,7 @@ export default function Navbar() {
             <p class="font-medium text-2xl">
               {" "}
               Our second ranking list is out! We're proud to feature feedback
-              from 1071 venture-backed founders.
+              from 1077 venture-backed founders.
             </p>
           </div>
         </div>
