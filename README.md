@@ -20,12 +20,10 @@ We use an Elo-based algorithm , which asks founders to make pair-wise comparison
 We take founder's data very seriously. Although we authenticate all founders through their LinkedIn profiles, we only store that data temporarily for authentication purposes. As soon as founders start submitting comparisons, we hash their identity, and unlink their hashed identity from the ratings they've made, so no one can ever connect a founder's ratings back to them. To be as secure as possible, all our code (as you can see here) is open-sourced. Our code’s been reviewed by engineers at venture-backed companies, we’re trying to do this as carefully as possible.
 
 ### Sponsors 
-* AngelList 
 * Crunchbase 
-* 2.12 Angels 
-* BBG Ventures
+* Canvas App
 * Bloomberg Beta
 * Precursor Ventures
-* Canvas App
+* SignalFire
 
 Although we have venture capital firms as sponsors for this project, they do not have access to any of the data nor are they able to contribute to any of the rankings. Our sponsors are only interested in supporting this ranking project so they can better serve founders.
