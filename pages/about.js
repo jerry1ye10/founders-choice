@@ -171,16 +171,15 @@ export default function FAQ() {
       </p>
       <h3 className={STYLED_SUBHEADER}>Who built this?</h3>
       <p className={STYLED_PARA}>
-        We are Jerry Ye and Daniel Tao, two student engineers at UPenn. You can
-        read more about us{" "}
+        We are{" "}
         <Link href="https://www.linkedin.com/in/jerry-y-048a65110/">
-          <a class="underline text-blue-400">here</a>
+          <a class="underline text-blue-400">Jerry Ye</a>
         </Link>{" "}
         and{" "}
         <Link href="https://danxtao.com/">
-          <a class="underline text-blue-400">here</a>
+          <a class="underline text-blue-400">Daniel Tao</a>
         </Link>
-        .
+        , two former student engineers from UPenn.
       </p>
       <h1 className={`${STYLED_HEADER} text-center mt-8 mb-8 text-6xl`}>
         Our Founding Sponsors
