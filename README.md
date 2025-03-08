@@ -8,7 +8,7 @@ Choosing the right partners to sit on your cap table is one of the hardest decis
 
 If you are a venture-backed founder, we would love for you to make comparisons on our site! Finishing all the comparisons should only take a few minutes and you can stop whenever you'd like. Some founders who've completed it so far have even called it fun. 
 
-Visit our site here:  https://founderschoicevc.com/
+Visit our site here:  https://www.founderschoicevc.com/
 
 ### Identity Verification
 In order to verify a Founder's identity, we use a combination of Linkedin and Crunchbase. This way, founders can only compare VCs that have actually invested in them. 
